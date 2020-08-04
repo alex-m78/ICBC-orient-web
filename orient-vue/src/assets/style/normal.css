@@ -1,0 +1,135 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* letter-spacing: 2px; */
+    font-family: "Microsoft YaHei","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB",Arial,sans-serif;
+}
+html,body{
+    height: 100%;
+    font-size: 16px;
+    width: 100%;
+    min-width: 800px;
+    min-height: 800px;
+    
+}
+
+.panel:hover{
+    /* box-shadow: 5px 5px 10px #eee, -5px 5px 10px #eee, 5px -5px 10px #eee, -5px -5px 10px #eee; */
+    box-shadow:0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+
+@media(min-width:800px){
+    .tag{
+        width: 15px;
+        height: 15px;
+    }
+    .stag{
+        width: 16px;
+        height: 16px;
+        margin-top: 17px;
+        margin-left: 5px;
+        /*margin-right: 2px;*/
+    }
+    .panel{
+        background-color: #fff;
+        margin: 3px;
+        border: 1px solid #ebeef5;
+        border-radius: 5px;
+        transition: .3s;
+        /* margin: 10px; */
+    }
+    .title{
+        margin:0px 0px 0px 5px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+}
+@media(min-width:1280px){
+    .tag{
+        width: 20px;
+        height: 20px;
+    }
+    .stag{
+        width: 18px;
+        height: 18px;
+        margin-top: 16px;
+        margin-left: 5px;
+    }
+    .title{
+        margin:10px 0px 0px 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 14px;
+    
+    }
+    .panel{
+        background-color: #fff;
+        margin: 10px;
+        border: 1px solid #ebeef5;
+        border-radius: 5px;
+        transition: .3s;
+        /* margin: 10px; */
+    }
+}
+@media(min-width:1600px){
+    .tag{
+        width: 25px;
+        height: 25px;
+        margin: 10px 5px ;
+    }
+    .stag{
+        width: 18px;
+        height: 18px;
+        margin-top: 16px;
+        margin-left: 23px;
+    }
+    .title{
+        margin:10px 0px 0px 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 18px;
+    
+    }
+    .panel{
+        background-color: #fff;
+        margin: 10px;
+        border: 1px solid #ebeef5;
+        border-radius: 5px;
+        transition: .3s;
+        /* margin: 10px; */
+    }
+    
+}
+@media(min-width:1920px){
+    .tag{
+        width: 35px;
+        height: 35px;
+        margin: 5px ;
+    }
+    .stag{
+        width: 20px;
+        height: 20px;
+        margin-top: 15px;
+        margin-left: 21px;
+    }
+    .title{
+        margin:10px 0px 0px 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 20px;
+    
+    }
+    .panel{
+        background-color: #fff;
+        margin: 15px;
+        border: 1px solid #ebeef5;
+        border-radius: 5px;
+        transition: .3s;
+        /* margin: 10px; */
+    }
+    
+}
+.center{
+    margin: 0 auto;
+}

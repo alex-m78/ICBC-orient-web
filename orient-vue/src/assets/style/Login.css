@@ -1,0 +1,176 @@
+#login {
+    width: 100%;
+    height: 100%;
+    background-color: #336d88;
+    position: relative;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+@media(min-width:800px){
+    .info {
+        padding: 20px 30px;
+        width: 340px;
+        height: 400px;
+        background-color: rgba(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgba(233, 233, 233, 0.3);
+    }
+    .middle{
+        /*使左上角对应到父元素的中心*/
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-170px,-200px);
+    }
+    .name{
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+    }
+    .row {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #aaa;
+    }
+    #signUpBtn{
+        width: 100%;
+    }
+    .row button{
+        padding: 5px;
+    }
+}
+@media(min-width:1280px){
+    .info {
+        padding: 20px 40px;
+        width: 360px;
+        height: 420px;
+        background-color: rgba(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgba(233, 233, 233, 0.3);
+    }
+    .middle{
+        /*使左上角对应到父元素的中心*/
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-180px,-210px);
+    }
+    .name{
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+    }
+    .row {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #aaa;
+    }
+}
+@media(min-width:1600px){
+    .info {
+        padding: 20px 40px;
+        width: 380px;
+        height: 460px;
+        background-color: rgba(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgba(233, 233, 233, 0.3);
+    }
+    .middle{
+        /*使左上角对应到父元素的中心*/
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-190px,-240px);
+    }
+    .name{
+        text-align: center;
+        height: 70px;
+        line-height: 70px;
+    }
+    .row {
+        margin: 15px 0;
+        font-size: 14px;
+        color: #aaa;
+    }
+}
+@media(min-width:1920px){
+    .info {
+        padding: 20px 40px;
+        width: 400px;
+        height: 480px;
+        background-color: rgba(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgba(233, 233, 233, 0.3);
+    }
+    .middle{
+        /*使左上角对应到父元素的中心*/
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-200px,-240px);
+    }
+    .name{
+        text-align: center;
+        height: 80px;
+        line-height: 80px;
+    }
+    .row {
+        margin: 20px 0;
+        font-size: 14px;
+        color: #aaa;
+    }
+}
+/* .el-form{
+    width: 100%;
+} */
+
+
+
+#loginBtn{
+    width: 100%;
+    margin-top: 10px;
+}
+#forgetBtn{
+    float: right;
+    padding: 0;
+}
+
+.el-button--text{
+    display: inline;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.info .el-input__inner{
+    border: none;
+    border-radius: 0;
+    border-bottom:1px solid #DCDFE6;
+    /* margin-bottom: 5px; */
+}
+
+/* 登录注册翻转 */
+.front {
+    transform: rotateY(0deg);
+}
+/* 将back旋转180度，背面朝向用户 */
+.back {
+    transform: rotateY(-180deg);
+}
+  
+.front,.back {
+    position: absolute;
+    /* 设置为背面朝向用户时不可见 */
+    backface-visibility: hidden;
+    transition: 0.3s linear;
+}
+  
+  /* 将front旋转180度 */
+  .middle-flip .front {
+    transform: rotateY(180deg);
+  }
+  /* 将back旋转180度 */
+  .middle-flip .back {
+    transform: rotateY(0deg);
+  }

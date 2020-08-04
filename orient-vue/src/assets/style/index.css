@@ -1,0 +1,247 @@
+.el-col{
+    height: 50px;
+    line-height: 50px;
+}
+@media(min-width:800px){
+    #container {
+        height: 775px;
+        margin: 0 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    #top {
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        /* border: 1px solid gray; */
+    }
+    .bottom{
+        height: calc(100% - 70px) ;
+        display: flex;
+        flex-direction: row;
+    
+    }
+    .left{
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .right{
+        width: calc(100% - 250px);
+        display: flex;
+        flex-direction: column;
+    }
+    #chartview {
+        height: 250px;
+        display: flex;
+        flex-direction: row;
+    }
+    #compared_table th,td{
+        font-size: 12px !important;
+        padding: 5px;
+    }
+}
+@media(min-width:1280px){
+    #container {
+        height: 875px;
+        margin: 0 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    #top {
+        height: 120px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .bottom{
+        height: calc(100% - 120px) ;
+        display: flex;
+        flex-direction: row;
+    }
+    .left{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    .right{
+        width: calc(100% - 300px);
+        display: flex;
+        flex-direction: column;
+    }
+    #chartview {
+        height: 280px;
+        /* padding-top: 20px; */
+        display: flex;
+        flex-direction: row;
+    }
+}
+@media(min-width:1600px){
+    #container {
+        height: 1025px;
+        margin: 0 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    #top {
+        height: 150px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        /* border: 1px solid gray; */
+    }
+    .bottom{
+        height: calc(100% - 150px) ;
+        display: flex;
+        flex-direction: row;
+    }
+    .left{
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+    .right{
+        width: calc(100% - 400px);
+        display: flex;
+        flex-direction: column;
+    }
+    #chartview {
+        height: 400px;
+        /* padding-top: 20px; */
+        display: flex;
+        flex-direction: row;
+    }
+}
+@media(min-width:1920px){
+    #container {
+        height: 1225px;
+        margin: 0 5px;
+        /* background-color: #fff; */
+        display: flex;
+        flex-direction: column;
+    }
+    #top {
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        /* border: 1px solid gray; */
+    }
+    .left{
+        width: 550px;
+        display: flex;
+        flex-direction: column;
+    }
+    #leftChart{
+        flex: 1 1 30%;
+    }
+    #leftMap{
+        flex: 1 1 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    #chart3{
+        flex: 1 1 80%;
+    }
+    .right{
+        width: calc(100% - 550px);
+        display: flex;
+        flex-direction: column;
+    }
+    #chartview {
+        height: 500px;
+        /* padding-top: 20px; */
+        display: flex;
+        flex-direction: row;
+    }
+    #table{
+        width: 100%;
+        background-color: 1px solid red;
+    }
+    #box1 {
+        flex: 1 1 60%;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        /* border: 1px solid green; */
+    }
+    #box2{
+        flex: 1 1 40%;
+        display: flex;
+        flex-direction: column;
+    }
+    #chart1{
+        flex: 1 1 80%;
+    }
+    #chart2 {
+        flex: 1 1 80%;
+    }
+    #chart4{
+        height: 100%;
+    }
+    #tableview {
+        flex: 1 1 40%;
+        display: flex;
+        flex-direction:column;
+        /* border: 1px solid gray; */
+    }
+    #compared_table{
+        width: 100%;
+        margin: 0 auto;
+        flex: 1 1 90%;
+    }
+    
+}
+#leftChart{
+    /* height: 300px; */
+    flex: 1 1 40%;
+}
+#leftMap{
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+}
+#chart3{
+    flex: 1 1 80%;
+    /* height: 100%; */
+}
+
+
+#box1 {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid green; */
+}
+#box2{
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+}
+#chart1{
+    flex: 1 1 80%;
+    padding: 0 10px;
+}
+#chart2 {
+    flex: 1 1 80%;
+}
+#chart4{
+    height: 100%;
+}
+#tableview {
+    flex: 1 1 80%;
+    display: flex;
+    flex-direction:column;
+    /* border: 1px solid gray; */
+}
+#compared_table{
+    width: 100%;
+    margin: 0 auto;
+    flex: 1 1 80%;
+}

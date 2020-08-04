@@ -10,6 +10,7 @@
 FROM node:latest as builder
 WORKDIR /app
 COPY orient-vue/package.json .
+COPY orient-vue/nginx.conf /etc/nginx/nginx.conf
 RUN npm install
 COPY orient-vue/ .
 RUN npm run build

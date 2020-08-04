@@ -10,7 +10,7 @@ export const Login = data => {
 
 const GetCar = data => {
     return $axios({
-        url: "/Car",
+        url: "/car",
         methods: "get",
         params: data
     })
@@ -18,7 +18,7 @@ const GetCar = data => {
 
 const GetStockHold = data => {
     return $axios({
-        url: "/StockHolds",
+        url: "/stockHolds",
         methods: "get",
         params: data
     })
@@ -26,7 +26,7 @@ const GetStockHold = data => {
 
 const GetIndustry = data =>{
     return $axios({
-        url: "/Industries",
+        url: "/industries",
         methods: "get",
         params: data
     })
@@ -42,28 +42,28 @@ const getTargetCompared=data=>{
 };
 export const getModelResult= data =>{
     return $axios({
-        url:"/ModelResults",
+        url:"/modelResults",
         methods:"get",
         params: data
     })
 };
 const getUser = data => {
     return $axios({
-        url: "/UserInfo",
+        url: "/userInfo",
         methods: "get",
         params: data
     })
 };
 const editUserRole = data => {
     return $axios({
-        url: "/UserRole",
+        url: "/userRole",
         methods: "get",
         params: data
     })
 };
 const deleteUser = data => {
     return $axios({
-        url: "/UserDelete",
+        url: "/userDelete",
         methods: "get",
         params: data
     })
@@ -86,7 +86,7 @@ const signUp=data=>{
 
 const getStockQuarter = data =>{
     return $axios({
-        url: "/SeasonShare",
+        url: "/seasonShare",
         methods: "get",
         params: data
     })

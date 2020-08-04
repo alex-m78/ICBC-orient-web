@@ -400,9 +400,8 @@ export default {
         console.log(value2)
         var dom = document.getElementById("chart4");
         var myChart = echarts.init(dom);
-        /*
         option = {
-          color: ["#eebb4d","#ffa931","#d6efc7", "#96bb7c", "#184d47", "#ff6361"],
+          color: ["#f7d6bf","#ffa931","#d6efc7", "#96bb7c", "#184d47", "#ff6361"],
           tooltip: {
             trigger: 'axis',
             axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -410,28 +409,41 @@ export default {
             }
           },
           legend: {
-            data: ['(0,5]', '(5,20]', '(20,50]', '(50,100]', '(100,500]','(500,3000]']
+            data: ['(0,5]', '(5,20]', '(20,50]', '(50,100]', '(100,500]','(500,3000]'],
+            left:'3%',
+            width:260,
+            bottom:'80%'
           },
           grid: {
             left: '3%',
             right: '4%',
-            bottom: '3%',
+            bottom: '2%',
             containLabel: true
           },
           xAxis: {
-            type: 'value'
+            type: 'category',
+            axisLabel: {
+              rotate: 45,
+              fontSize: 10,
+            },
+            data:date
           },
           yAxis: {
-            type: 'category',
-            data: date
+            type: 'value',
+            axisLabel: {
+              rotate: 45,
+              fontSize: 10,
+            },
+            max:3000,
           },
           series: [
             {
               name: '(0,5]',
               type: 'bar',
+              barWidth:'70%',
               stack: '总量',
               label: {
-                show: true,
+                show: false,
                 position: 'insideRight'
               },
               data: value1
@@ -441,7 +453,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: true,
+                show: false,
                 position: 'insideRight'
               },
               data: value2
@@ -451,7 +463,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: true,
+                show: false,
                 position: 'insideRight'
               },
               data: value3
@@ -461,7 +473,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: true,
+                show: false,
                 position: 'insideRight'
               },
               data: value4
@@ -471,7 +483,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: true,
+                show: false,
                 position: 'insideRight'
               },
               data: value5
@@ -481,99 +493,10 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: true,
+                show: false,
                 position: 'insideRight'
               },
               data: value6
-            },
-          ],
-        };
-        */
-        option = {
-          color: ["#eebb4d","#ffa931","#d6efc7", "#96bb7c", "#184d47", "#ff6361"],
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-              type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-          },
-          legend: {
-            data: ['(0,5]', '(5,20]', '(20,50]', '(50,100]', '(100,500]','(500,3000]']
-          },
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: {
-            type: 'value'
-          },
-          yAxis: {
-            type: 'category',
-            data:date
-          },
-          series: [
-            {
-              name: '(0,5]',
-              type: 'bar',
-              barWidth:'80%',
-              stack: '总量',
-              label: {
-                show: true,
-                position: 'insideRight'
-              },
-              data: value1
-            },
-            {
-              name: '(5,20]',
-              type: 'bar',
-              stack: '总量',
-              label: {
-                show: true,
-                position: 'insideRight'
-              },
-              data: value2
-            },
-            {
-              name: '(20,50]',
-              type: 'bar',
-              stack: '总量',
-              label: {
-                show: true,
-                position: 'insideRight'
-              },
-              data: [991, 1034, 1115, 1136, 1085, 944, 944, 835, 860, 800, 783, 859, 903, 896, 831, 1699]
-            },
-            {
-              name: '(50,100]',
-              type: 'bar',
-              stack: '总量',
-              label: {
-                show: true,
-                position: 'insideRight'
-              },
-              data: [991, 1034, 1115, 1136, 1085, 944, 944, 835, 860, 800, 783, 859, 903, 896, 831, 1699]
-            },
-            {
-              name: '(100,500]',
-              type: 'bar',
-              stack: '总量',
-              label: {
-                show: true,
-                position: 'insideRight'
-              },
-              data: [991, 1034, 1115, 1136, 1085, 944, 944, 835, 860, 800, 783, 859, 903, 896, 831, 1699]
-            },
-            {
-              name: '(500,3000]',
-              type: 'bar',
-              stack: '总量',
-              label: {
-                show: true,
-                position: 'insideRight'
-              },
-              data: [991, 1034, 1115, 1136, 1085, 944, 944, 835, 860, 800, 783, 859, 903, 896, 831, 1699]
             }
           ]
         };

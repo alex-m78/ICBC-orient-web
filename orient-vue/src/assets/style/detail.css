@@ -21,22 +21,22 @@
 }
 #detail_top{
     /* padding: 0 20px; */
-    flex: 1 1 15%;
+    height: 150px;
     margin-bottom: 10px;
 }
-@media(min-width:800px){
+#industriesChart{
+    /*flex:1 1 60%;*/
+    height: 450px;
+}
+@media(max-width:1280px){
     #leftTab{
-        width:300px;
+        width:400px;
         display: flex;
         flex-direction: column;
     }
-    #leftMap{
-        /*flex:1 1 60%;*/
-        height: 150px;
-        /* padding: 15px; */
-    }
+    
     #rightTab{
-        width: calc(100% - 310px);
+        width: calc(100% - 400px);
         display: flex;
         flex-direction: column;
     }
@@ -49,19 +49,17 @@
 
 @media(min-width:1280px){
     #leftTab{
-        width:400px;
+        width:450px;
         display: flex;
         flex-direction: column;
     }
     #rightTab{
-        width: calc(100% - 430px);
+        width: calc(100% - 450px);
     }
     
-    #leftMap{
+    /* #leftMap{
         flex:1 1 55%;
-        /*height: 300px;*/
-        /* padding: 15px; */
-    }
+    } */
     #leftPanel{
         flex: 1 1 45%;
         /*height: calc(100% - 300px);*/
@@ -75,9 +73,10 @@
   } */
 
 #detail_main{
-    flex:1 1 85%;
+    height: calc(100% - 170px);
     display: flex;
     flex-direction: row;
+    width: 100%;
     /* background-color: #fff; */
 }
 

@@ -8,7 +8,7 @@
     align-items: center; */
 }
 
-@media(min-width:800px){
+@media(max-width:1280px){
     .info {
         padding: 20px 30px;
         width: 340px;

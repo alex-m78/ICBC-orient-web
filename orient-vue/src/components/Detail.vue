@@ -29,7 +29,7 @@
       <div id="leftTab" class="panel">
         <div class="title">
           <el-row :gutter="5">
-            <el-col :span="1.5">
+            <el-col :span="2">
               <div class="grid-content bg-purple">
                 <img class="tag" src="../../src/assets/images/tag1.png" />
               </div>
@@ -39,11 +39,11 @@
             </el-col>
           </el-row>
         </div>
-        <div id="leftMap"></div>
+        <div id="industriesChart"></div>
         <el-divider></el-divider>
         <div class="title">
           <el-row :gutter="5">
-            <el-col :span="1.5">
+            <el-col :span="2">
               <div class="grid-content bg-purple">
                 <img class="tag" src="../../src/assets/images/tag1.png" />
               </div>
@@ -60,7 +60,7 @@
       <div id="rightTab" class="panel">
         <div class="title">
           <el-row :gutter="5">
-            <el-col :span="1.5">
+            <el-col :span="2">
               <div class="grid-content bg-purple">
                 <img class="tag" src="../../src/assets/images/tag1.png" />
               </div>
@@ -90,9 +90,9 @@ export default {
   data() {
     return {
       year: "2020年",
-      quarter: "第一季度",
+      quarter: "第二季度",
       sql_year: 2020,
-      sql_quarter: 1,
+      sql_quarter: 2,
     };
   },
   components: {
@@ -145,7 +145,7 @@ export default {
       }
       let industry_names = pre_industry_names.concat(real_industry_names);
       industry_names = Array.from(new Set(industry_names))
-        var dom = document.getElementById("leftMap");
+        var dom = document.getElementById("industriesChart");
         var myChart = echarts.init(dom);
         var option = {
           color: ["#ffdc34", "#537ec5", "#aa26da", "#ff6361", "#f08a5d"],
@@ -156,7 +156,7 @@ export default {
           legend: {
             icon: 'circle',
             orient: "horizontal",
-            left: 20,
+            left: 5,
             data: industry_names,
           },
           series: [
@@ -164,7 +164,7 @@ export default {
               name: "预测新进重仓股行业",
               type: "pie",
               selectedMode: "single",
-              radius: [0, "50%"],
+              radius: [0, "40%"],
               center: ["50%", "60%"],
               label: {
                 show: false,
@@ -173,7 +173,7 @@ export default {
                 show: false,
               },
               itemStyle: {
-                borderWidth: 5,
+                // borderWidth: 5,
                 borderColor: "#fff",
                 emphasis: {
                   shadowBlur: 10,
@@ -188,13 +188,13 @@ export default {
             {
               name: "实际新进重仓股行业",
               type: "pie",
-              radius: ["60%", "75%"],
-              center: ["50%", "60%"],
+              radius: ["50%", "60%"],
+              center: ["40%", "60%"],
               label: {
                 show: false,
               },
               itemStyle: {
-                borderWidth: 5,
+                // borderWidth: 5,
                 borderColor: "#fff",
                 emphasis: {
                   shadowBlur: 10,
@@ -245,4 +245,26 @@ export default {
 
 <style scoped>
 @import "../assets/style/detail.css";
+@media(max-width:1280px){
+  .el-col-2{
+    width: 25px;
+    padding: 5px 0;
+  }
+}
+@media(min-width:1280px){
+  .el-col-2{
+    width: 25px;
+    padding: 5px 0;
+  }
+}
+@media(min-width:1600px){
+  .el-col-2{
+    width: 35px;
+  }
+}
+@media(min-width:1920px){
+  .el-col-2{
+    width: 40px;
+  }
+}
 </style>

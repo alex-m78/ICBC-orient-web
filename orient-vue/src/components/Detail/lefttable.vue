@@ -1,7 +1,7 @@
 <template>
     <el-table id="cell-class-name" :data="tableData"
                :span-method="objectSpanMethod"
-              height="100%">
+              height="100%" >
         <el-table-column
                 prop="period"  label="预测季度"  align="center">
         </el-table-column>

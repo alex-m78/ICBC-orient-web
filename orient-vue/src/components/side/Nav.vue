@@ -41,7 +41,7 @@ export default {
 };
 </script>
 <style scoped>
-@media (min-width: 800px) {
+@media (max-width: 1280px) {
   #navbar {
     height: 100%;
     width: 150px;

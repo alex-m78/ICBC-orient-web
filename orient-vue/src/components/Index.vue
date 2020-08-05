@@ -19,7 +19,7 @@
               </el-col>
             </el-row>
           </div>
-          <div id="chart4"></div>
+          <div id="chart4" class="chart"></div>
         </div>
         <div id="leftMap" class="panel">
           <div class="title">
@@ -34,7 +34,7 @@
               </el-col>
             </el-row>
           </div>
-          <div id="chart3"></div>
+          <div id="chart3" class="chart"></div>
         </div>
       </div>
       <div class="right">
@@ -52,7 +52,7 @@
                 </el-col>
               </el-row>
             </div>
-            <div id="chart1"></div>
+            <div id="chart1" class="chart"></div>
           </div>
           <div class="panel" id="box2">
             <div class="title">
@@ -67,7 +67,7 @@
                 </el-col>
               </el-row>
             </div>
-            <div id="chart2"></div>
+            <div id="chart2" class="chart"></div>
           </div>
         </div>
         <div id="tableview" class="panel">
@@ -285,7 +285,7 @@ export default {
             {
               type: "pie",
               radius: ["45%", "60%"],
-              center: ["50%", "35%"],
+              center: ["50%", "40%"],
               selectedMode: "single",
               data: industry_value,
               label: {
@@ -696,4 +696,30 @@ export default {
 </script>
 <style scoped>
 @import "../assets/style/index.css";
+.el-row{
+  display: flex;
+  justify-content:center;
+}
+@media(max-width:1280px){
+  .el-col-2{
+    width: 25px;
+    padding: 5px 0;
+  }
+}
+@media(min-width:1280px){
+  .el-col-2{
+    width: 25px;
+    padding: 5px 0;
+  }
+}
+@media(min-width:1600px){
+  .el-col-2{
+    width: 35px;
+  }
+}
+@media(min-width:1920px){
+  .el-col-2{
+    width: 40px;
+  }
+}
 </style>

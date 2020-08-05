@@ -28,15 +28,15 @@ export default {
   flex: 1 1 20%;
   height: 90%;
   margin: 5px 20px;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   overflow: hidden;
   /* border: 1px solid green; */
 }
 
-@media(min-width:800px){
+@media(max-width:1280px){
   .cell{
-    margin: 5px;
+    margin: 10px;
     position: relative;
   }
   .stock_name{
@@ -51,7 +51,17 @@ export default {
 }
 @media(min-width:1280px){
   .cell{
-    margin: 15px;
+    margin: 10px;
+    position: relative;
+  }
+  .stock_name{
+    position: absolute;
+    font-size: 10px;
+    left: 10px;
+    top: 5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #6886c5;
   }
 }
 @media(min-width:1600px){

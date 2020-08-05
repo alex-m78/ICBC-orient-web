@@ -78,7 +78,7 @@ export const getCellData=()=>{
 const signUp=data=>{
     return $axios({
         url:"/register",
-        methods:"post",
+        methods:"get",
         params:data
     })
 }

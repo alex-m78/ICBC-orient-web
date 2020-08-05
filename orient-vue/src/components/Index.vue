@@ -100,7 +100,7 @@ export default {
     this.barchart();
     this.changeHeaderStatus();
     this.getFiveStockData();
-    this.getStockQuarter()
+    this.getStockQuarter();
   },
   computed: {
     weekStocks() {
@@ -171,6 +171,7 @@ export default {
             },
           ],
           yAxis: [
+            
             {
               type: "value",
               scale: true,
@@ -178,6 +179,10 @@ export default {
               max: 1,
               min: 0,
               boundaryGap: [0.2, 0.2],
+              splitLine: {
+              show: false,
+            },
+              
             },
             {
               type: "value",
@@ -186,6 +191,9 @@ export default {
               max: 1,
               min: 0,
               boundaryGap: [0.2, 0.2],
+              splitLine: {
+              show: false,
+            },
             },
           ],
           series: [
@@ -330,20 +338,23 @@ export default {
             source: source,
           },
           grid: {
-            bottom: 100,
+            bottom: 80,
             containLabel: true,
           },
           xAxis: {
             name: "被基金持有数",
             nameGap: 22,
             nameLocation: "center",
+            splitLine: {
+              show: false,
+            },
           },
 
-          yAxis: {type: "category", name: "重仓股名称"},
+          yAxis: { type: "category", name: "重仓股名称" },
           visualMap: {
             orient: "horizontal",
             left: "center",
-            bottom: 50,
+            bottom: 20,
             min: 0,
             max: maxCount + 5,
             // text: ['High Score', 'Low Score'],
@@ -375,7 +386,7 @@ export default {
       bus.$emit("isShowStatus", true);
     },
     getFiveStockData: function () {
-      this.$store.dispatch('stock_week_info')
+      this.$store.dispatch("stock_week_info");
     },
     getStockQuarter: function () {
       this.$api.getStockQuarter().then((res) => {
@@ -384,24 +395,31 @@ export default {
         console.log(data);
         let option = null;
         let date = [];
-        let value1 =[];let value2 =[];let value3 =[];let value4 =[];let value5 =[];let value6 =[];
-        for (let i = 0; i < 16; i++){
-          date.push(data[i]["endDate"])}
-        console.log(date)
-        for (let j = 0; j < 16; j++){
-          value1.push(data[j]["end1"])
-          value2.push(data[j]["end2"])
-          value3.push(data[j]["end3"])
-          value4.push(data[j]["end4"])
-          value5.push(data[j]["end5"])
-          value6.push(data[j]["end6"])
+        let value1 = [];
+        let value2 = [];
+        let value3 = [];
+        let value4 = [];
+        let value5 = [];
+        let value6 = [];
+        for (let i = 0; i < 16; i++) {
+          date.push(data[i]["endDate"]);
         }
-        console.log(value1)
-        console.log(value2)
+        console.log(date);
+        for (let j = 0; j < 16; j++) {
+          value1.push(data[j]["end1"]);
+          value2.push(data[j]["end2"]);
+          value3.push(data[j]["end3"]);
+          value4.push(data[j]["end4"]);
+          value5.push(data[j]["end5"]);
+          value6.push(data[j]["end6"]);
+        }
+        console.log(value1);
+        console.log(value2);
         var dom = document.getElementById("chart4");
         var myChart = echarts.init(dom);
+        /*
         option = {
-          color: ["#f7d6bf","#ffa931","#d6efc7", "#96bb7c", "#184d47", "#ff6361"],
+          color: ["#eebb4d","#ffa931","#d6efc7", "#96bb7c", "#184d47", "#ff6361"],
           tooltip: {
             trigger: 'axis',
             axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -409,41 +427,28 @@ export default {
             }
           },
           legend: {
-            data: ['(0,5]', '(5,20]', '(20,50]', '(50,100]', '(100,500]','(500,3000]'],
-            left:'3%',
-            width:260,
-            bottom:'80%'
+            data: ['(0,5]', '(5,20]', '(20,50]', '(50,100]', '(100,500]','(500,3000]']
           },
           grid: {
             left: '3%',
             right: '4%',
-            bottom: '2%',
+            bottom: '3%',
             containLabel: true
           },
           xAxis: {
-            type: 'category',
-            axisLabel: {
-              rotate: 45,
-              fontSize: 10,
-            },
-            data:date
+            type: 'value'
           },
           yAxis: {
-            type: 'value',
-            axisLabel: {
-              rotate: 45,
-              fontSize: 10,
-            },
-            max:3000,
+            type: 'category',
+            data: date
           },
           series: [
             {
               name: '(0,5]',
               type: 'bar',
-              barWidth:'70%',
               stack: '总量',
               label: {
-                show: false,
+                show: true,
                 position: 'insideRight'
               },
               data: value1
@@ -453,7 +458,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: false,
+                show: true,
                 position: 'insideRight'
               },
               data: value2
@@ -463,7 +468,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: false,
+                show: true,
                 position: 'insideRight'
               },
               data: value3
@@ -473,7 +478,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: false,
+                show: true,
                 position: 'insideRight'
               },
               data: value4
@@ -483,7 +488,7 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: false,
+                show: true,
                 position: 'insideRight'
               },
               data: value5
@@ -493,20 +498,201 @@ export default {
               type: 'bar',
               stack: '总量',
               label: {
-                show: false,
+                show: true,
                 position: 'insideRight'
               },
               data: value6
-            }
-          ]
+            },
+          ],
+        };
+        */
+        option = {
+          color: [
+            "#eebb4d",
+            "#ffa931",
+            "#d6efc7",
+            "#96bb7c",
+            "#184d47",
+            "#ff6361",
+          ],
+          tooltip: {
+            trigger: "axis",
+            axisPointer: {
+              // 坐标轴指示器，坐标轴触发有效
+              type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+            },
+          },
+          legend: {
+            data: [
+              "(0,5]",
+              "(5,20]",
+              "(20,50]",
+              "(50,100]",
+              "(100,500]",
+              "(500,3000]",
+            ],
+            icon:'roundRect'
+          },
+          grid: {
+            x: "50",
+            y: "50",
+            // left: '3%',
+            // right: '4%',
+            // bottom: '3%',
+            // containLabel: true
+          },
+          xAxis: {
+            type: "category",
+            data: date,
+            splitLine: {
+              show: false,
+            },
+          },
+          yAxis: {
+            type: "value",
+            splitLine: {
+              show: false,
+            },
+          },
+          series: [
+            {
+              name: "(0,5]",
+              type: "bar",
+              barWidth: "80%",
+              stack: "总量",
+              // label: {
+              //   show: true,
+              //   position: 'insideRight'
+              // },
+              data: value1,
+            },
+            {
+              name: "(5,20]",
+              type: "bar",
+              stack: "总量",
+              // label: {
+              //   show: true,
+              //   position: 'insideRight'
+              // },
+              data: value2,
+            },
+            {
+              name: "(20,50]",
+              type: "bar",
+              stack: "总量",
+              // label: {
+              //   show: true,
+              //   position: 'insideRight'
+              // },
+              data: [
+                991,
+                1034,
+                1115,
+                1136,
+                1085,
+                944,
+                944,
+                835,
+                860,
+                800,
+                783,
+                859,
+                903,
+                896,
+                831,
+                1699,
+              ],
+            },
+            {
+              name: "(50,100]",
+              type: "bar",
+              stack: "总量",
+              // label: {
+              //   show: true,
+              //   position: 'insideRight'
+              // },
+              data: [
+                991,
+                1034,
+                1115,
+                1136,
+                1085,
+                944,
+                944,
+                835,
+                860,
+                800,
+                783,
+                859,
+                903,
+                896,
+                831,
+                1699,
+              ],
+            },
+            {
+              name: "(100,500]",
+              type: "bar",
+              stack: "总量",
+              // label: {
+              //   show: true,
+              //   position: 'insideRight'
+              // },
+              data: [
+                991,
+                1034,
+                1115,
+                1136,
+                1085,
+                944,
+                944,
+                835,
+                860,
+                800,
+                783,
+                859,
+                903,
+                896,
+                831,
+                1699,
+              ],
+            },
+            {
+              name: "(500,3000]",
+              type: "bar",
+              stack: "总量",
+              // label: {
+              //   show: true,
+              //   position: 'insideRight'
+              // },
+              data: [
+                991,
+                1034,
+                1115,
+                1136,
+                1085,
+                944,
+                944,
+                835,
+                860,
+                800,
+                783,
+                859,
+                903,
+                896,
+                831,
+                1699,
+              ],
+            },
+          ],
         };
         if (option && typeof option === "object") {
           myChart.setOption(option, true);
         }
       });
     },
-  }
-}
+  },
+};
 </script>
 <style scoped>
 @import "../assets/style/index.css";

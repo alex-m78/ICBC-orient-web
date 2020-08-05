@@ -10,7 +10,7 @@
 <!--&lt;!&ndash;          <el-badge :value="3" class="news"></el-badge>&ndash;&gt;-->
 <!--          <el-avatar src=".../../src/assets/images/photo.png"></el-avatar>-->
 <!--      </el-col>-->
-      <el-col :span="2" :offset="14">
+      <el-col :span="2" :offset="12">
         <el-dropdown @command="Logout">
           <span class="el-dropdown-link">{{username}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>

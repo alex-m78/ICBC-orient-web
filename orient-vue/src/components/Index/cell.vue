@@ -1,5 +1,6 @@
 <template>
   <div class="cell panel">
+    <div class="stock_name">{{stockName}}</div>
     <cellchart v-bind="$attrs"></cellchart>
   </div>
 </template>
@@ -10,6 +11,11 @@ export default {
   
   data() {
     return {};
+  },
+  computed: {
+    stockName() {
+      return this.$attrs.weekStock.stockName
+    },
   },
   components: {
     cellchart
@@ -31,11 +37,32 @@ export default {
 @media(min-width:800px){
   .cell{
     margin: 5px;
+    position: relative;
+  }
+  .stock_name{
+    position: absolute;
+    font-size: 10px;
+    left: 10px;
+    top: 5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #6886c5;
   }
 }
 @media(min-width:1280px){
   .cell{
     margin: 15px;
+  }
+}
+@media(min-width:1600px){
+  .stock_name{
+    position: absolute;
+    font-size: 16px;
+    left: 10px;
+    top: 5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #6886c5;
   }
 }
 /* .chart {

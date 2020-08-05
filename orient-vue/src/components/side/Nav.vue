@@ -9,13 +9,9 @@
       router
     >
       <el-row class="nav_title">
-        <el-col :span="2"><img class="stag" src="../../assets/images/icbc.png" /></el-col>
-        <el-col :span="20" :offset="1"> <span>组合资产投资分析</span></el-col>
+          <img class="stag" src="../../assets/images/icbc.png" />
+          <span>组合资产投资分析</span>
       </el-row>
-<!--      <div class="nav_title">-->
-<!--          <img class="stag" src="../../assets/images/icbc.png" />-->
-<!--        <span>组合资产投资分析</span>-->
-<!--      </div>-->
 
       <el-menu-item v-for="menu in menuList" :key="menu.id" :index="menu.path">
         <i :class="menu.icon"></i>
@@ -31,31 +27,31 @@ export default {
   data() {
     return {};
   },
-  computed:{
-    menuList(){
-      return this.$store.getters.menuList
-      }
+  computed: {
+    menuList() {
+      return this.$store.getters.menuList;
+    },
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(this.menuList)
+      console.log(this.menuList);
       console.log(key, keyPath);
     },
   },
 };
 </script>
 <style scoped>
-@media(min-width:800px){
+@media (min-width: 800px) {
   #navbar {
     height: 100%;
     width: 150px;
   }
 }
-@media(min-width:1280px){
+@media (min-width: 1280px) {
   #navbar {
-  height: 100%;
-  width: 200px;
-}
+    height: 100%;
+    width: 200px;
+  }
 }
 
 .el-menu {
@@ -68,5 +64,21 @@ export default {
   line-height: 50px;
   border-bottom: 1px solid rgb(220, 222, 226);
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-menu-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stag {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.nav_title > .el-col-2{
+  width: 20px;
 }
 </style>

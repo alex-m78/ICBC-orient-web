@@ -3,29 +3,29 @@
     <el-table :data="targetCompared.slice((currentPage-1)*pageSize,currentPage*pageSize)"
               :span-method="targetComparedSpanMethod">
       <el-table-column prop="target" label="指标" header-align="center"></el-table-column>
-      <el-table-column prop="subTarget" width="105" label="子指标" header-align="center"></el-table-column>
+      <el-table-column prop="feature" width="130" label="子指标" header-align="center"></el-table-column>
       <el-table-column label="新进重仓股" prop="heavyStock" header-align="center">
-        <el-table-column prop="heavyStock.mean" label="均值" header-align="center"></el-table-column>
-        <el-table-column prop="heavyStock.sd" label="标准差" header-align="center"></el-table-column>
-        <el-table-column prop="heavyStock.validSample" label="有效样本" header-align="center"></el-table-column>
+        <el-table-column prop="mean1" label="均值" header-align="center"></el-table-column>
+        <el-table-column prop="std1" label="标准差" header-align="center"></el-table-column>
+        <el-table-column prop="len1" label="有效样本" header-align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="非新进重仓股" prop="nonHeavyStock" header-align="center">
-        <el-table-column prop="nonHeavyStock.mean" label="均值" header-align="center"></el-table-column>
-        <el-table-column prop="nonHeavyStock.sd" label="标准差" header-align="center"></el-table-column>
+        <el-table-column prop="mean2" label="均值" header-align="center"></el-table-column>
+        <el-table-column prop="std2" label="标准差" header-align="center"></el-table-column>
         <el-table-column
-          prop="nonHeavyStock.validSample"
+          prop="len2"
           label="有效样本"
           header-align="center"
         ></el-table-column>
       </el-table-column>
-      <el-table-column prop="meanT" label="均值检验t值" header-align="center"></el-table-column>
+      <!-- <el-table-column prop="meanT" label="均值检验t值" header-align="center"></el-table-column> -->
     </el-table>
      <div class="pagination-name" style="margin-top:5px;">
        <el-pagination align='center'
                       @size-change="handleSizeChange"
                       @current-change="handleCurrentChange"
                       :current-page="currentPage"
-                      :page-sizes="[1,5,6]"
+                      :page-sizes="[4]"
                       :page-size="pageSize"
                       layout="total, sizes, prev, pager, next, jumper"
                       :total="targetCompared.length">
@@ -42,7 +42,7 @@ export default {
       targetCompared: [],
       currentPage: 1, // 当前页码
       total: 20, // 总条数
-      pageSize: 6 // 每页的数据条数
+      pageSize: 4 // 每页的数据条数
     };
   },
   mounted() {
@@ -81,18 +81,19 @@ export default {
         var result = res.data.result;
         this.targetCompared = [];
         console.log("123")
-        console.log(result);
+        
         for (let data of result) {
-          for (let i = 0; i < data.subTarget.length; i++) {
-            let obj = new Object();
-            obj.meanT = data.meanT;
-            obj.target = data.target;
-            obj.subTarget = data.subTarget[i];
-            obj.heavyStock = data.heavyStock[i];
-            obj.nonHeavyStock = data.nonHeavyStock[i];
-            this.targetCompared.push(obj);
+          for (let i = 0; i < data.length; i++) {
+            // let obj = new Object();
+            // obj.meanT = data.meanT;
+            // obj.target = data.target;
+            // obj.subTarget = data.subTarget[i];
+            // obj.heavyStock = data.heavyStock[i];
+            // obj.nonHeavyStock = data.nonHeavyStock[i];
+            this.targetCompared.push(data[i]);
           }
         }
+        console.log(this.targetCompared);
       });
     },
     targetComparedSpanMethod({ rowIndex, columnIndex }) {

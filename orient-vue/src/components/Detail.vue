@@ -189,7 +189,7 @@ export default {
               name: "实际新进重仓股行业",
               type: "pie",
               radius: ["50%", "60%"],
-              center: ["40%", "60%"],
+              center: ["50%", "60%"],
               label: {
                 show: false,
               },

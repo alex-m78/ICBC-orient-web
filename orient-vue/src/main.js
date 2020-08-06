@@ -54,6 +54,8 @@ router.beforeEach((to, from, next) => {
     }
 });
 
+$(window).resize(function () {location.reload();})
+
 new Vue({
     el: '#app',
     router,

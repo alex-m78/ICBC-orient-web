@@ -415,6 +415,7 @@ export default {
         }
         console.log(value1);
         console.log(value2);
+        console.log(value3);
         var dom = document.getElementById("chart4");
         var myChart = echarts.init(dom);
         /*
@@ -508,7 +509,7 @@ export default {
         */
         option = {
           color: [
-            "#eebb4d",
+            "#ffdecf",
             "#ffa931",
             "#d6efc7",
             "#96bb7c",
@@ -584,24 +585,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: [
-                991,
-                1034,
-                1115,
-                1136,
-                1085,
-                944,
-                944,
-                835,
-                860,
-                800,
-                783,
-                859,
-                903,
-                896,
-                831,
-                1699,
-              ],
+              data: value3
             },
             {
               name: "(50,100]",
@@ -611,24 +595,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: [
-                991,
-                1034,
-                1115,
-                1136,
-                1085,
-                944,
-                944,
-                835,
-                860,
-                800,
-                783,
-                859,
-                903,
-                896,
-                831,
-                1699,
-              ],
+              data: value4
             },
             {
               name: "(100,500]",
@@ -638,24 +605,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: [
-                991,
-                1034,
-                1115,
-                1136,
-                1085,
-                944,
-                944,
-                835,
-                860,
-                800,
-                783,
-                859,
-                903,
-                896,
-                831,
-                1699,
-              ],
+              data: value5
             },
             {
               name: "(500,3000]",
@@ -665,24 +615,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: [
-                991,
-                1034,
-                1115,
-                1136,
-                1085,
-                944,
-                944,
-                835,
-                860,
-                800,
-                783,
-                859,
-                903,
-                896,
-                831,
-                1699,
-              ],
+              data: value6
             },
           ],
         };

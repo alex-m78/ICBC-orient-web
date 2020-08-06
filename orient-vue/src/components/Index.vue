@@ -130,7 +130,10 @@ export default {
           },
 
           legend: {
-            data: ["CAR", "AR"],
+            type: 'scroll',
+            top: 3,
+            data: ["新进重仓股CAR", "新进重仓股AR","非重仓股CAR","非重仓股AR"],
+
           },
           // toolbox: {
           //   show: true,
@@ -169,9 +172,30 @@ export default {
                 return res;
               })(),
             },
+            {
+              type: "category",
+              boundaryGap: true,
+              data: (function () {
+                var res = [];
+                for (let i = 0; i < 120; i++) {
+                  res.push(data[i]["dayCount"]);
+                }
+                return res;
+              })(),
+            },
+            {
+              type: "category",
+              boundaryGap: true,
+              data: (function () {
+                var res = [];
+                for (let i = 0; i < 120; i++) {
+                  res.push(data[i]["dayCount"]);
+                }
+                return res;
+              })(),
+            },
           ],
           yAxis: [
-            
             {
               type: "value",
               scale: true,
@@ -195,11 +219,12 @@ export default {
               show: false,
             },
             },
+
           ],
           series: [
             {
-              name: "AR",
-              type: "bar",
+              name: "新进重仓股AR",
+              type: "line",
               xAxisIndex: 1,
               yAxisIndex: 1,
               data: (function () {
@@ -214,7 +239,7 @@ export default {
               })(),
             },
             {
-              name: "CAR",
+              name: "新进重仓股CAR",
               type: "line",
               data: (function () {
                 var res = [];
@@ -223,6 +248,38 @@ export default {
                   for (let i = 0; i < 120; i++) {
                     res.push(data[i]["car"]);
                     len++;
+                  }
+                }
+                return res;
+              })(),
+            },
+            {
+              name: "非重仓股AR",
+              type: "line",
+              xAxisIndex: 1,
+              yAxisIndex: 1,
+              data: (function () {
+                var res = [];
+                var len = 120;
+                while (len--) {
+                  for (let i = 0; i < 120; i++) {
+                    res.push(data[i]["ar"]);
+                  }
+                }
+                return res;
+              })(),
+            },
+            {
+              name: "非重仓股CAR",
+              type: "line",
+              xAxisIndex: 1,
+              yAxisIndex: 1,
+              data: (function () {
+                var res = [];
+                var len = 120;
+                while (len--) {
+                  for (let i = 0; i < 120; i++) {
+                    res.push(data[i]["ar"]);
                   }
                 }
                 return res;
@@ -524,6 +581,8 @@ export default {
             },
           },
           legend: {
+            type: 'scroll',
+            top: 3,
             data: [
               "(0,5]",
               "(5,20]",

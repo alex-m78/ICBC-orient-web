@@ -18,14 +18,14 @@
           header-align="center"
         ></el-table-column>
       </el-table-column>
-      <!-- <el-table-column prop="meanT" label="均值检验t值" header-align="center"></el-table-column> -->
+      <el-table-column prop="corr" label="相关性" header-align="center"></el-table-column>
     </el-table>
      <div class="pagination-name" style="margin-top:5px;">
        <el-pagination align='center'
                       @size-change="handleSizeChange"
                       @current-change="handleCurrentChange"
                       :current-page="currentPage"
-                      :page-sizes="[4]"
+                      :page-sizes="[3]"
                       :page-size="pageSize"
                       layout="total, sizes, prev, pager, next, jumper"
                       :total="targetCompared.length">
@@ -42,7 +42,7 @@ export default {
       targetCompared: [],
       currentPage: 1, // 当前页码
       total: 20, // 总条数
-      pageSize: 4 // 每页的数据条数
+      pageSize: 3// 每页的数据条数
     };
   },
   mounted() {
@@ -81,7 +81,7 @@ export default {
         var result = res.data.result;
         this.targetCompared = [];
         console.log("123")
-        
+        console.log(res);
         for (let data of result) {
           for (let i = 0; i < data.length; i++) {
             // let obj = new Object();
@@ -93,7 +93,7 @@ export default {
             this.targetCompared.push(data[i]);
           }
         }
-        console.log(this.targetCompared);
+        
       });
     },
     targetComparedSpanMethod({ rowIndex, columnIndex }) {

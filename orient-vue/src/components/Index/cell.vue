@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     stockName() {
-      return this.$attrs.weekStock.stockName
+      return this.$attrs.weekStock[0].stockName
     },
   },
   components: {

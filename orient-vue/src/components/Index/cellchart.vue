@@ -19,10 +19,14 @@ export default {
   },
   mounted() {
     this.creatChart();
-    console.log(this.weekStock.stockValue)
   },
   methods: {
     creatChart: function () {
+      let date=[],value=[]
+      for(let v of this.weekStock){
+        date.push(v.tradeDate)
+        value.push(v.close)
+      }
       var cellChart = echarts.init(document.getElementById(this.cellchart));
       var celloption = {
         color: ["#5B86E5"],
@@ -50,15 +54,16 @@ export default {
           show: false,
           type: "category",
           boundaryGap: false,
-          data: ["Mon", "Tue", "Wed", "Thu", "Sun"],
+          data:date,
         },
         yAxis: {
           show: false,
           type: "value",
+          min: 'dataMin'
         },
         series: [
           {
-            data:this.weekStock.stockValue,
+            data:value,
             type: "line",
             lineStyle: {
               color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [

@@ -47,8 +47,9 @@
                     <img class="tag" src="../../src/assets/images/tag1.png" />
                   </div>
                 </el-col>
-                <el-col :span="20">
+                <el-col :span="20" style="display:flex;justify-content:space-between">
                   <div class="grid-content bg-purple">新进重仓股平均超额收益率</div>
+                  <el-button id="CAAR_Change"  type="text" @click="handleChange">CAR</el-button>
                 </el-col>
               </el-row>
             </div>
@@ -88,7 +89,16 @@ import bus from "../utils/bus";
 export default {
   name: "index",
   data() {
-    return {};
+    return {
+      CAAR:{
+        dayCount:[],
+        newCar:[],
+        oldCar:[],
+        newAr:[],
+        oldAr:[]
+
+      }
+    };
   },
   components: {
     cell,
@@ -113,12 +123,20 @@ export default {
       // console.log(token);
       this.$api.GetCar().then((res) => {
         let data = res.data.result;
-
+        console.log("create");
         console.log(data);
+        for(let v of data){
+          this.CAAR.dayCount.push(v.dayCount);
+          this.CAAR.newCar.push(v.newCar);
+          this.CAAR.oldCar.push(v.oldCar);
+          this.CAAR.newAr.push(v.newAr);
+          this.CAAR.oldAr.push(v.newCar);
+        }
         var dom = document.getElementById("chart1");
         var myChart = echarts.init(dom);
         let option = null;
         option = {
+          color: [ "#aa26da","#537ec5"],
           tooltip: {
             trigger: "axis",
             axisPointer: {
@@ -128,162 +146,39 @@ export default {
               },
             },
           },
-
           legend: {
-            type: 'scroll',
             top: 3,
-            data: ["新进重仓股CAR", "新进重仓股AR","非重仓股CAR","非重仓股AR"],
-
+            data: ["新进重仓股AR", "非重仓股AR"],
           },
-          // toolbox: {
-          //   show: true,
-          //   feature: {
-          //     dataView: { readOnly: false },
-          //     restore: {},
-          //     saveAsImage: {},
-          //   },
+          // dataZoom: {
+          //   show: false,
+          //   start: 0,
+          //   end: 100,
           // },
-          dataZoom: {
-            show: false,
-            start: 0,
-            end: 100,
+          xAxis: {
+            type: "category",
+            boundaryGap: true,
+            data: this.CAAR.dayCount,
           },
-          xAxis: [
-            {
-              type: "category",
-              boundaryGap: true,
-              data: (function () {
-                //var now = new Date();
-                var res = [];
-                for (let i = 0; i < 120; i++) {
-                  res.push(data[i]["dayCount"]);
-                }
-                return res;
-              })(),
-            },
-            {
-              type: "category",
-              boundaryGap: true,
-              data: (function () {
-                var res = [];
-                for (let i = 0; i < 120; i++) {
-                  res.push(data[i]["dayCount"]);
-                }
-                return res;
-              })(),
-            },
-            {
-              type: "category",
-              boundaryGap: true,
-              data: (function () {
-                var res = [];
-                for (let i = 0; i < 120; i++) {
-                  res.push(data[i]["dayCount"]);
-                }
-                return res;
-              })(),
-            },
-            {
-              type: "category",
-              boundaryGap: true,
-              data: (function () {
-                var res = [];
-                for (let i = 0; i < 120; i++) {
-                  res.push(data[i]["dayCount"]);
-                }
-                return res;
-              })(),
-            },
-          ],
-          yAxis: [
-            {
-              type: "value",
-              scale: true,
-              name: "CAR",
-              max: 1,
-              min: 0,
-              boundaryGap: [0.2, 0.2],
-              splitLine: {
+          yAxis: {
+            type: "value",
+            scale: true,
+            name: "AR",
+            // boundaryGap: [0.2, 0.2],
+            splitLine: {
               show: false,
             },
-              
-            },
-            {
-              type: "value",
-              scale: true,
-              name: "AR",
-              max: 1,
-              min: 0,
-              boundaryGap: [0.2, 0.2],
-              splitLine: {
-              show: false,
-            },
-            },
-
-          ],
+          },
           series: [
             {
               name: "新进重仓股AR",
               type: "line",
-              xAxisIndex: 1,
-              yAxisIndex: 1,
-              data: (function () {
-                var res = [];
-                var len = 120;
-                while (len--) {
-                  for (let i = 0; i < 120; i++) {
-                    res.push(data[i]["ar"]);
-                  }
-                }
-                return res;
-              })(),
-            },
-            {
-              name: "新进重仓股CAR",
-              type: "line",
-              data: (function () {
-                var res = [];
-                var len = 0;
-                while (len < 120) {
-                  for (let i = 0; i < 120; i++) {
-                    res.push(data[i]["car"]);
-                    len++;
-                  }
-                }
-                return res;
-              })(),
+              data: this.CAAR.newAr
             },
             {
               name: "非重仓股AR",
               type: "line",
-              xAxisIndex: 1,
-              yAxisIndex: 1,
-              data: (function () {
-                var res = [];
-                var len = 120;
-                while (len--) {
-                  for (let i = 0; i < 120; i++) {
-                    res.push(data[i]["ar"]);
-                  }
-                }
-                return res;
-              })(),
-            },
-            {
-              name: "非重仓股CAR",
-              type: "line",
-              xAxisIndex: 1,
-              yAxisIndex: 1,
-              data: (function () {
-                var res = [];
-                var len = 120;
-                while (len--) {
-                  for (let i = 0; i < 120; i++) {
-                    res.push(data[i]["ar"]);
-                  }
-                }
-                return res;
-              })(),
+              data: this.CAAR.oldAr
             },
           ],
         };
@@ -309,9 +204,7 @@ export default {
         var dom = document.getElementById("chart2");
         var myChart = echarts.init(dom);
         // var app = {};
-        var option = null;
-
-        option = {
+        var option = {
           color: ["#ffdc34", "#537ec5", "#aa26da", "#ff6361", "#f08a5d"],
           tooltip: {
             trigger: "item",
@@ -320,6 +213,7 @@ export default {
           legend: {
             // orient: 'vertical',
             // top: 'middle',
+            type: "scroll",
             icon: "circle",
             bottom: 15,
             left: "center",
@@ -581,7 +475,7 @@ export default {
             },
           },
           legend: {
-            type: 'scroll',
+            type: "scroll",
             top: 3,
             data: [
               "(0,5]",
@@ -591,7 +485,7 @@ export default {
               "(100,500]",
               "(500,3000]",
             ],
-            icon:'roundRect'
+            icon: "roundRect",
           },
           grid: {
             x: "50",
@@ -644,7 +538,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: value3
+              data: value3,
             },
             {
               name: "(50,100]",
@@ -654,7 +548,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: value4
+              data: value4,
             },
             {
               name: "(100,500]",
@@ -664,7 +558,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: value5
+              data: value5,
             },
             {
               name: "(500,3000]",
@@ -674,7 +568,7 @@ export default {
               //   show: true,
               //   position: 'insideRight'
               // },
-              data: value6
+              data: value6,
             },
           ],
         };
@@ -683,34 +577,75 @@ export default {
         }
       });
     },
+    handleChange:function(){
+      let text=$('#CAAR_Change').text();
+       var myChart = echarts.init(document.getElementById("chart1"));
+      if(text==='CAR'){
+        $('#CAAR_Change').text('AR')
+       
+        myChart.setOption({
+          legend: {
+            data: ["新进重仓股CAR", "非重仓股CAR"],
+          },
+          series:[
+            {
+              name: "新进重仓股CAR",
+              data: this.CAAR.newCar
+            },
+            {
+              name: "非重仓股CAR",
+              data: this.CAAR.oldCar
+            },
+          ],
+        })
+      }else{
+        $('#CAAR_Change').text('CAR')
+        myChart.setOption({
+          legend: {
+            data: ["新进重仓股AR", "非重仓股AR"],
+          },
+          series:[
+            {
+              name: "新进重仓股AR",
+              data: this.CAAR.newAr
+            },
+            {
+              name: "非重仓股AR",
+              data: this.CAAR.oldAr
+            },
+          ],
+        })
+      }
+      console.log(text)
+    }
   },
 };
 </script>
 <style scoped>
 @import "../assets/style/index.css";
-.el-row{
+.el-row {
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
-@media(max-width:1280px){
-  .el-col-2{
+@media (max-width: 1280px) {
+  .el-col-2 {
     width: 25px;
     padding: 5px 0;
   }
 }
-@media(min-width:1280px){
-  .el-col-2{
+@media (min-width: 1280px) {
+  .el-col-2 {
     width: 25px;
     padding: 5px 0;
   }
 }
-@media(min-width:1600px){
-  .el-col-2{
+@media (min-width: 1600px) {
+  .el-col-2 {
     width: 35px;
   }
 }
-@media(min-width:1920px){
-  .el-col-2{
+@media (min-width: 1920px) {
+  .el-col-2 {
     width: 40px;
   }
 }

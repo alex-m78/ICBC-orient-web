@@ -48,7 +48,7 @@
                   </div>
                 </el-col>
                 <el-col :span="20" style="display:flex;justify-content:space-between">
-                  <div class="grid-content bg-purple">新进重仓股平均超额收益率</div>
+                  <div class="grid-content bg-purple">平均超额收益率对比</div>
                   <el-button id="CAAR_Change"  type="text" @click="handleChange">CAR</el-button>
                 </el-col>
               </el-row>

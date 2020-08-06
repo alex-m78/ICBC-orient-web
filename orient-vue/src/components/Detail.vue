@@ -148,12 +148,25 @@ export default {
         var dom = document.getElementById("industriesChart");
         var myChart = echarts.init(dom);
         var option = {
-          color: ["#ffdc34", "#537ec5", "#aa26da", "#ff6361", "#f08a5d"],
+          color: ["#fc9d9d",
+                  "#ffa36c",
+                  "#ebdc87",
+                  "#80bdab",
+                  "#fbc490",
+                  "#d291bc",
+                  "#fa7d09",
+                  "#8bcdcd",
+                  "#bac964",
+                  "#dbc6eb",
+                  "#abc2e8",
+                  "#ad6989"],
           tooltip: {
             trigger: "item",
             formatter: "{a} <br/>{b}: {c} ({d}%)",
           },
           legend: {
+            type: 'scroll',
+            top: 3,
             icon: 'circle',
             orient: "horizontal",
             left: 5,
@@ -165,7 +178,7 @@ export default {
               type: "pie",
               selectedMode: "single",
               radius: [0, "40%"],
-              center: ["50%", "60%"],
+              center: ["50%", "50%"],
               label: {
                 show: false,
               },
@@ -189,7 +202,7 @@ export default {
               name: "实际新进重仓股行业",
               type: "pie",
               radius: ["50%", "60%"],
-              center: ["50%", "60%"],
+              center: ["50%", "50%"],
               label: {
                 show: false,
               },

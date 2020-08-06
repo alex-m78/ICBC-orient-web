@@ -1,16 +1,16 @@
 <template>
   <div id="headbar">
     <el-row :gutter="24">
-      <el-col :span="8">
-        <el-input placeholder="请输入内容" v-model="input" class="input-with-select" >
-          <el-button slot="append" icon="el-icon-search" @click="gogogo"></el-button>
-        </el-input>
-      </el-col>
+<!--      <el-col :span="10">-->
+<!--        <el-input placeholder="请输入内容" v-model="input" class="input-with-select" >-->
+<!--          <el-button slot="append" icon="el-icon-search" @click="gogogo"></el-button>-->
+<!--        </el-input>-->
+<!--      </el-col>-->
 <!--      <el-col :span="2" :offset="9">-->
-<!--&lt;!&ndash;          <el-badge :value="3" class="news"></el-badge>&ndash;&gt;-->
+<!--      <el-badge :value="3" class="news"></el-badge>-->
 <!--          <el-avatar src=".../../src/assets/images/photo.png"></el-avatar>-->
 <!--      </el-col>-->
-      <el-col :span="2" :offset="12">
+      <el-col :span="2" :offset="22">
         <el-dropdown @command="Logout">
           <span class="el-dropdown-link">{{username}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>

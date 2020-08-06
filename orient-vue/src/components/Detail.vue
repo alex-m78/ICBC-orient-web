@@ -148,12 +148,25 @@ export default {
         var dom = document.getElementById("industriesChart");
         var myChart = echarts.init(dom);
         var option = {
-          color: ["#ffdc34", "#537ec5", "#aa26da", "#ff6361", "#f08a5d"],
+          color: ["#fc9d9d",
+                  "#ffa36c",
+                  "#ebdc87",
+                  "#80bdab",
+                  "#fbc490",
+                  "#d291bc",
+                  "#fa7d09",
+                  "#8bcdcd",
+                  "#bac964",
+                  "#dbc6eb",
+                  "#abc2e8",
+                  "#ad6989"],
           tooltip: {
             trigger: "item",
             formatter: "{a} <br/>{b}: {c} ({d}%)",
           },
           legend: {
+            type: 'scroll',
+            top: 3,
             icon: 'circle',
             orient: "horizontal",
             left: 5,
@@ -165,7 +178,7 @@ export default {
               type: "pie",
               selectedMode: "single",
               radius: [0, "40%"],
-              center: ["50%", "60%"],
+              center: ["50%", "45%"],
               label: {
                 show: false,
               },
@@ -189,7 +202,7 @@ export default {
               name: "实际新进重仓股行业",
               type: "pie",
               radius: ["50%", "60%"],
-              center: ["50%", "60%"],
+              center: ["50%", "45%"],
               label: {
                 show: false,
               },
@@ -205,6 +218,49 @@ export default {
               },
               data:real_industry_value
             },
+          ],
+          graphic: [
+            {
+              type: 'group',
+              left: "center",
+              top: '80%',
+              children: [
+                {
+                  type: 'rect',
+                  z: 100,
+                  left: 'center',
+                  top: 'middle',
+                  shape: {
+                    width: 290,
+                    height: 60,
+                    r:[5,5,5,5]
+                  },
+                  style: {
+                    fill: '#fff',
+                    stroke: '#999',
+                    lineWidth: 1,
+                    shadowBlur: 5,
+                    // shadowOffsetX: 3,
+                    // shadowOffsetY: 3,
+                    shadowColor: 'rgba(0,0,0,0.1)',
+                  }
+                },
+                {
+                  type: 'text',
+                  z: 100,
+                  left: 'center',
+                  top: 'middle',
+                  style: {
+                    fill: '#999',
+                    text: [
+                      '外圈展示实际新进重仓股排行前5的行业占比',
+                      '内圈展示预测新进重仓股排行前5的行业占比',
+                    ].join('\n'),
+                    font: '14px Microsoft YaHei'
+                  }
+                }
+              ]
+            }
           ],
         };
         if (option && typeof option === "object") {

@@ -1,7 +1,9 @@
 <template>
     <el-table id="cell-class-name" :data="tableData"
                :span-method="objectSpanMethod"
-              height="100%" border >
+              height="100%" border
+              :header-cell-style="tableHeaderCellStyle"
+              >
         <el-table-column
                 prop="period"  label="预测季度"  align="center">
         </el-table-column>
@@ -72,19 +74,25 @@
                         };
                     }
                 }
-            }
+            },
+          // 修改 table cell边框的背景色
+          //   tableCellStyle () {
+          //     return 'border-color: #838383;'
+          //   },
+            // 修改 table header cell的背景色
+            tableHeaderCellStyle () {
+              return 'border-color: #ebecf1; color: #606266;'
+          }
         }
     }
 </script>
 
 <style scoped>
 #cell-class-name {
-    border-color: #709fb0;
+    border-color: #ebecf1;
     width: 100%;
 }
-#pagination-name {
-  border-color: #709fb0;
-  width: 100%;
-  margin-top:15px
+.el-table--cell-class-name {
+  border-color: #cccccc;
 }
 </style>

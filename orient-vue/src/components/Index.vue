@@ -130,7 +130,7 @@ export default {
           this.CAAR.newCar.push(v.newCar);
           this.CAAR.oldCar.push(v.oldCar);
           this.CAAR.newAr.push(v.newAr);
-          this.CAAR.oldAr.push(v.newCar);
+          this.CAAR.oldAr.push(v.oldAr);
         }
         var dom = document.getElementById("chart1");
         var myChart = echarts.init(dom);

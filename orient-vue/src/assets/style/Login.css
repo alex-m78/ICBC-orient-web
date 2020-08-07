@@ -34,9 +34,7 @@
         font-size: 14px;
         color: #aaa;
     }
-    #signUpBtn{
-        width: 100%;
-    }
+    
     .row button{
         padding: 5px;
     }
@@ -174,3 +172,6 @@
   .middle-flip .back {
     transform: rotateY(0deg);
   }
+  #signUpBtn{
+    width: 100%;
+}

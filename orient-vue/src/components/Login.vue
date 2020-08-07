@@ -79,8 +79,8 @@
               show-password
             ></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-button type="primary" id="signUpBtn" @click="handleSignUp">Sign Up</el-button>
+          <el-form-item >
+            <el-button type="primary" id="signUpBtn"  @click="handleSignUp">Sign Up</el-button>
           </el-form-item>
           <div class="row">
             <p>

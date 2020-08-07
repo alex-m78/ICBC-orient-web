@@ -27,6 +27,8 @@ export default {
         date.push(v.tradeDate)
         value.push(v.close)
       }
+      date=date.reverse();
+      value=value.reverse();
       var cellChart = echarts.init(document.getElementById(this.cellchart));
       var celloption = {
         color: ["#5B86E5"],
@@ -43,6 +45,13 @@ export default {
             fontFamily: "Microsoft YaHei",
           },
           extraCssText: "box-shadow: 0 0 3px rgba(150, 150, 150, 0.5);",
+          trigger: "axis",
+            axisPointer: {
+              type: "cross",
+              label: {
+                backgroundColor: "#283b56",
+              },
+            },
         },
         grid: {
           x: 0,

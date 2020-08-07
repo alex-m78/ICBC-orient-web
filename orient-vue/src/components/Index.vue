@@ -123,8 +123,8 @@ export default {
       // console.log(token);
       this.$api.GetCar().then((res) => {
         let data = res.data.result;
-        console.log("create");
-        console.log(data);
+        // console.log("create");
+        // console.log(data);
         for(let v of data){
           this.CAAR.dayCount.push(v.dayCount);
           this.CAAR.newCar.push(v.newCar);

@@ -106,10 +106,10 @@ export default {
   name: "Prediction",
   data() {
     return {
-      year: "2020年",
-      quarter: "第二季度",
-      sql_year: 2020,
-      sql_quarter: 2,
+      year: "2019年",
+      quarter: "第三季度",
+      sql_year: 2019,
+      sql_quarter: 3,
     };
   },
   components: {
@@ -117,41 +117,39 @@ export default {
     stockInfo,
   },
   mounted() {
-    this.changeHeaderStatus();
-    this.getStockData();
+    this.changeHeaderStatus()
+    // this.getStockData();
+    this.getRealStockData()
+    this.getPreStockData()
     this.precision();
   },
   methods: {
-    getStockData: async function () {
-      let param = {
-        year: this.sql_year,
-        quarter: this.sql_quarter,
-      };
-      await this.$store.dispatch("model_result", param);
-      // this.$api.getModelResult({year:this.sql_year,quarter:this.sql_quarter}).
-      // then((res) => {
-      //   console.log(res);
-      //   let data = res.data.result;
-      //   console.log(data);
-      this.pieChart(
-        this.$store.state.moduleDetail.industryDataPre,
-        this.$store.state.moduleDetail.industryDataReal
-      );
-      this.$refs.compareTable.changeTableData(
-        this.$store.state.moduleDetail.predictStock,
-        this.$store.state.moduleDetail.realStock
-      );
-      this.$refs.stockInfo.changeTableData(
-        this.$store.state.moduleDetail.stockDataDetail
-      );
-      // })
+    getRealStockData: async function(){
+      let param={
+        year:this.sql_year,
+        quarter:this.sql_quarter
+      }
+      await this.$store.dispatch("real_result",param)
+      this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
+      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
+    },
+    getPreStockData: async function(){
+      let param={
+        year:this.sql_year,
+        quarter:this.sql_quarter
+      }
+      await this.$store.dispatch("pre_result",param)
+      this.pieChart(this.$store.state.moduleDetail.industryDataPre,this.$store.state.moduleDetail.industryDataReal)
+      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
+      this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
     },
     pieChart: function (preindustry, realindustry) {
+
       let pre_industry_names = [];
       let pre_industry_value = [];
       let real_industry_names = [];
       let real_industry_value = [];
-      if (preindustry != null) {
+      if (preindustry !== undefined){
         for (let i = 0; i < preindustry.length; i++) {
           pre_industry_names.push(preindustry[i]["industryName"]);
           pre_industry_value.push({
@@ -160,7 +158,7 @@ export default {
           });
         }
       }
-      if (realindustry != null) {
+      if (realindustry !== undefined) {
         for (let i = 0; i < realindustry.length; i++) {
           real_industry_names.push(realindustry[i]["industryName"]);
           real_industry_value.push({
@@ -299,7 +297,8 @@ export default {
       this.sql_year = Number(this.year.slice(0, 4));
       // console.log(this.sql_year);
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
-      this.getStockData();
+      this.getRealStockData();
+      this.getPreStockData();
     },
     changeQuarter() {
       if (this.quarter === "第一季度") {
@@ -312,9 +311,10 @@ export default {
       } else {
         this.sql_quarter = 4;
       }
-      console.log(this.sql_quarter);
-      this.$refs.compareTable.changePeriod(this.year, this.quarter);
-      this.getStockData();
+      console.log(this.sql_quarter)
+      this.$refs.compareTable.changePeriod(this.year,this.quarter)
+      this.getRealStockData();
+      this.getPreStockData();
     },
     changeHeaderStatus: function () {
       bus.$emit("isShowStatus", false);

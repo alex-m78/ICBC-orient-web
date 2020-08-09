@@ -28,7 +28,7 @@
             }
         },
         methods: {
-            changePeriod: function(year,quarter){
+            changePeriod: function(year, quarter){
               console.log(this.tableData)
               // if (this.tableData == null){
               //   this.tableData.push()
@@ -36,20 +36,28 @@
               this.tableData[0]["period"]= year + quarter
               console.log(this.tableData)
             },
-            changeTableData: function(pre,real){
-                let len = Math.max(pre.length, real.length)
+            changeTableData: function(pre, real){
+              let lengthPre = 0
+              let lengthReal = 0
+              if (pre !== undefined) {
+                lengthPre = pre.length
+              }
+              if (real !== undefined) {
+                lengthReal = real.length
+              }
+                let len = Math.max(lengthPre, lengthReal)
                 let periodData = this.tableData[0]["period"]
                 this.tableData.splice(0,this.tableData.length)
                 let tempPre = "";
                 let tempReal = "";
                 for(let i=0; i<len; i++){
-                    if (i < pre.length){
+                    if (i < lengthPre){
                         tempPre=pre[i]
                     }
                     else {
                         tempPre=""
                     }
-                    if (i < real.length) {
+                    if (i < lengthReal) {
                         tempReal=real[i]
                     }
                     else {

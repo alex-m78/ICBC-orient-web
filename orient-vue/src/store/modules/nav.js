@@ -12,6 +12,7 @@ const moduleNav={
     mutations:{
         SETROUTERS(state,routers){
             state.dynamicRouterMap=routers
+            state.staticRouterMap=routes
             // 拼接路由
             state.staticRouterMap=state.staticRouterMap.concat(routers)
             // router.addRoutes(state.dynamicRouterMap)

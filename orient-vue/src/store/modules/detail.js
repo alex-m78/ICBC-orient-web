@@ -1,5 +1,5 @@
 
-import {getModelResult} from "../../requests/server"
+import {getRealResult, getPreResult} from "@/requests/server"
 
 const moduleDetail={
     state:{
@@ -11,20 +11,36 @@ const moduleDetail={
     },
     getters:{},
     mutations:{
-        MODELRESULT:(state,param)=>{
+        RealResult:(state,param)=>{
+            console.log("mutation1")
             console.log(param)
-            state.industryDataPre=param.industryDataPre;
+            // state.industryDataPre=param.industryDataPre;
             state.industryDataReal=param.industryDataReal;
-            state.predictStock=param.predictStock
-            state.realStock=param.realStock;
+            // state.predictStock=param.predictStock
+        },
+        PreResult:(state,param)=>{
             state.stockDataDetail=param.stockDataDetail;
+            state.realStock=param.realStock;
+            state.predictStock=param.predictStock
         }
+
     },
     actions:{
-        async model_result(context,param){
-            let res= await getModelResult(param);
+        async real_result(context,param){
+            let res= await getRealResult(param);
             let data=res.data.result;
-            context.commit('MODELRESULT',data)
+            if (data !== undefined) {
+                context.commit('RealResult',data)
+            }
+        },
+        async pre_result(context,param){
+            console.log("action")
+            console.log(param)
+            let res= await getPreResult(param);
+            let data = res.data.result;
+            if (data !== undefined) {
+                context.commit('PreResult',data)
+            }
         }
     }
 }

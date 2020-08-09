@@ -57,21 +57,38 @@
           <compareTable ref="compareTable"></compareTable>
         </div>
       </div>
-      <div id="rightTab" class="panel">
-        <div class="title">
-          <el-row :gutter="5">
-            <el-col :span="2">
-              <div class="grid-content bg-purple">
-                <img class="tag" src="../../src/assets/images/tag1.png" />
-              </div>
-            </el-col>
-            <el-col :span="15">
-              <div class="grid-content bg-purple">新进重仓股</div>
-            </el-col>
-          </el-row>
+      <div id="rightTab">
+        <div id="rateChart" class="panel">
+          <div class="title">
+            <el-row :gutter="5">
+              <el-col :span="2">
+                <div class="grid-content bg-purple">
+                  <img class="tag" src="../../src/assets/images/tag1.png" />
+                </div>
+              </el-col>
+              <el-col :span="15">
+                <div class="grid-content bg-purple">预测准确率</div>
+              </el-col>
+            </el-row>
+          </div>
+          <div id="precision" class="chart"></div>
         </div>
-        <div id="stockInfoTable">
-          <stockInfo ref="stockInfo"></stockInfo>
+        <div id="stockTable" class="panel">
+          <div class="title">
+            <el-row :gutter="5">
+              <el-col :span="2">
+                <div class="grid-content bg-purple">
+                  <img class="tag" src="../../src/assets/images/tag1.png" />
+                </div>
+              </el-col>
+              <el-col :span="15">
+                <div class="grid-content bg-purple">新进重仓股</div>
+              </el-col>
+            </el-row>
+          </div>
+          <div id="stockInfoTable">
+            <stockInfo ref="stockInfo"></stockInfo>
+          </div>
         </div>
       </div>
     </div>
@@ -81,8 +98,8 @@
 <script>
 import compareTable from "../components/Detail/lefttable.vue";
 import echarts from "echarts";
-import stockInfo from "../components/Detail/rightTable.vue"
-import bus from "../utils/bus"
+import stockInfo from "../components/Detail/rightTable.vue";
+import bus from "../utils/bus";
 // import pagination from "../components/common/pagination"
 
 export default {
@@ -100,38 +117,47 @@ export default {
     stockInfo,
   },
   mounted() {
-    this.changeHeaderStatus()
+    this.changeHeaderStatus();
     this.getStockData();
+    this.precision();
   },
   methods: {
-    getStockData: async function(){
-      let param={
-        year:this.sql_year,
-        quarter:this.sql_quarter
-      }
-      await this.$store.dispatch("model_result",param)
+    getStockData: async function () {
+      let param = {
+        year: this.sql_year,
+        quarter: this.sql_quarter,
+      };
+      await this.$store.dispatch("model_result", param);
       // this.$api.getModelResult({year:this.sql_year,quarter:this.sql_quarter}).
       // then((res) => {
       //   console.log(res);
       //   let data = res.data.result;
       //   console.log(data);
-      this.pieChart(this.$store.state.moduleDetail.industryDataPre,this.$store.state.moduleDetail.industryDataReal)
-      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
-      this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
+      this.pieChart(
+        this.$store.state.moduleDetail.industryDataPre,
+        this.$store.state.moduleDetail.industryDataReal
+      );
+      this.$refs.compareTable.changeTableData(
+        this.$store.state.moduleDetail.predictStock,
+        this.$store.state.moduleDetail.realStock
+      );
+      this.$refs.stockInfo.changeTableData(
+        this.$store.state.moduleDetail.stockDataDetail
+      );
       // })
     },
-    pieChart: function (preindustry,realindustry) {
-
+    pieChart: function (preindustry, realindustry) {
       let pre_industry_names = [];
       let pre_industry_value = [];
       let real_industry_names = [];
       let real_industry_value = [];
-      if (preindustry != null){
+      if (preindustry != null) {
         for (let i = 0; i < preindustry.length; i++) {
           pre_industry_names.push(preindustry[i]["industryName"]);
           pre_industry_value.push({
             value: preindustry[i]["count"],
-            name: preindustry[i]["industryName"]})
+            name: preindustry[i]["industryName"],
+          });
         }
       }
       if (realindustry != null) {
@@ -139,133 +165,134 @@ export default {
           real_industry_names.push(realindustry[i]["industryName"]);
           real_industry_value.push({
             value: realindustry[i]["count"],
-            name: realindustry[i]["industryName"]
-          })
+            name: realindustry[i]["industryName"],
+          });
         }
       }
       let industry_names = pre_industry_names.concat(real_industry_names);
-      industry_names = Array.from(new Set(industry_names))
-        var dom = document.getElementById("industriesChart");
-        var myChart = echarts.init(dom);
-        var option = {
-          color: ["#fc9d9d",
-                  "#ffa36c",
-                  "#ebdc87",
-                  "#80bdab",
-                  "#fbc490",
-                  "#d291bc",
-                  "#fa7d09",
-                  "#8bcdcd",
-                  "#bac964",
-                  "#dbc6eb",
-                  "#abc2e8",
-                  "#ad6989"],
-          tooltip: {
-            trigger: "item",
-            formatter: "{a} <br/>{b}: {c} ({d}%)",
-          },
-          legend: {
-            type: 'scroll',
-            top: 3,
-            icon: 'circle',
-            orient: "horizontal",
-            left: 5,
-            data: industry_names,
-          },
-          series: [
-            {
-              name: "预测新进重仓股行业",
-              type: "pie",
-              selectedMode: "single",
-              radius: [0, "40%"],
-              center: ["50%", "45%"],
-              label: {
-                show: false,
-              },
-              labelLine: {
-                show: false,
-              },
-              itemStyle: {
-                // borderWidth: 5,
-                borderColor: "#fff",
-                emphasis: {
-                  shadowBlur: 10,
-                  shadowOffsetX: 0,
-                  shadowColor: "rgba(0, 0, 0, 0.5)",
-                  borderWidth:0
-                },
-              },
-              data: pre_industry_value,
-
+      industry_names = Array.from(new Set(industry_names));
+      var dom = document.getElementById("industriesChart");
+      var myChart = echarts.init(dom);
+      var option = {
+        color: [
+          "#fc9d9d",
+          "#ffa36c",
+          "#ebdc87",
+          "#80bdab",
+          "#fbc490",
+          "#d291bc",
+          "#fa7d09",
+          "#8bcdcd",
+          "#bac964",
+          "#dbc6eb",
+          "#abc2e8",
+          "#ad6989",
+        ],
+        tooltip: {
+          trigger: "item",
+          formatter: "{a} <br/>{b}: {c} ({d}%)",
+        },
+        legend: {
+          type: "scroll",
+          top: 3,
+          icon: "circle",
+          orient: "horizontal",
+          left: 5,
+          data: industry_names,
+        },
+        series: [
+          {
+            name: "预测新进重仓股行业",
+            type: "pie",
+            selectedMode: "single",
+            radius: [0, "40%"],
+            center: ["50%", "45%"],
+            label: {
+              show: false,
             },
-            {
-              name: "实际新进重仓股行业",
-              type: "pie",
-              radius: ["50%", "60%"],
-              center: ["50%", "45%"],
-              label: {
-                show: false,
-              },
-              itemStyle: {
-                // borderWidth: 5,
-                borderColor: "#fff",
-                emphasis: {
-                  shadowBlur: 10,
-                  shadowOffsetX: 0,
-                  shadowColor: "rgba(0, 0, 0, 0.5)",
-                  borderWidth:0
-                },
-              },
-              data:real_industry_value
+            labelLine: {
+              show: false,
             },
-          ],
-          graphic: [
-            {
-              type: 'group',
-              left: "center",
-              top: '80%',
-              children: [
-                {
-                  type: 'rect',
-                  z: 100,
-                  left: 'center',
-                  top: 'middle',
-                  shape: {
-                    width: 290,
-                    height: 60,
-                    r:[5,5,5,5]
-                  },
-                  style: {
-                    fill: '#fff',
-                    stroke: '#999',
-                    lineWidth: 1,
-                    shadowBlur: 5,
-                    // shadowOffsetX: 3,
-                    // shadowOffsetY: 3,
-                    shadowColor: 'rgba(0,0,0,0.1)',
-                  }
+            itemStyle: {
+              // borderWidth: 5,
+              borderColor: "#fff",
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+                borderWidth: 0,
+              },
+            },
+            data: pre_industry_value,
+          },
+          {
+            name: "实际新进重仓股行业",
+            type: "pie",
+            radius: ["50%", "60%"],
+            center: ["50%", "45%"],
+            label: {
+              show: false,
+            },
+            itemStyle: {
+              // borderWidth: 5,
+              borderColor: "#fff",
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+                borderWidth: 0,
+              },
+            },
+            data: real_industry_value,
+          },
+        ],
+        graphic: [
+          {
+            type: "group",
+            left: "center",
+            top: "80%",
+            children: [
+              {
+                type: "rect",
+                z: 100,
+                left: "center",
+                top: "middle",
+                shape: {
+                  width: 290,
+                  height: 60,
+                  r: [5, 5, 5, 5],
                 },
-                {
-                  type: 'text',
-                  z: 100,
-                  left: 'center',
-                  top: 'middle',
-                  style: {
-                    fill: '#999',
-                    text: [
-                      '外圈展示实际新进重仓股排行前5的行业占比',
-                      '内圈展示预测新进重仓股排行前5的行业占比',
-                    ].join('\n'),
-                    font: '14px Microsoft YaHei'
-                  }
-                }
-              ]
-            }
-          ],
-        };
-        if (option && typeof option === "object") {
-          myChart.setOption(option, true);
-        }
+                style: {
+                  fill: "#fff",
+                  stroke: "#999",
+                  lineWidth: 1,
+                  shadowBlur: 5,
+                  // shadowOffsetX: 3,
+                  // shadowOffsetY: 3,
+                  shadowColor: "rgba(0,0,0,0.1)",
+                },
+              },
+              {
+                type: "text",
+                z: 100,
+                left: "center",
+                top: "middle",
+                style: {
+                  fill: "#999",
+                  text: [
+                    "外圈展示实际新进重仓股排行前5的行业占比",
+                    "内圈展示预测新进重仓股排行前5的行业占比",
+                  ].join("\n"),
+                  font: "14px Microsoft YaHei",
+                },
+              },
+            ],
+          },
+        ],
+      };
+      if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+      }
     },
     changeYear: function () {
       // console.log(this.year);
@@ -275,51 +302,126 @@ export default {
       this.getStockData();
     },
     changeQuarter() {
-      if(this.quarter === "第一季度"){
-
+      if (this.quarter === "第一季度") {
         this.sql_quarter = 1;
       }
-      if(this.quarter === "第三季度"){
+      if (this.quarter === "第三季度") {
         this.sql_quarter = 3;
-      }
-      else if(this.quarter === "第二季度"){
+      } else if (this.quarter === "第二季度") {
         this.sql_quarter = 2;
-      }
-      else{
+      } else {
         this.sql_quarter = 4;
       }
-      console.log(this.sql_quarter)
-      this.$refs.compareTable.changePeriod(this.year,this.quarter)
+      console.log(this.sql_quarter);
+      this.$refs.compareTable.changePeriod(this.year, this.quarter);
       this.getStockData();
     },
     changeHeaderStatus: function () {
-      bus.$emit("isShowStatus", false)
-    }
-  }
+      bus.$emit("isShowStatus", false);
+    },
+    precision: function () {
+      var myChart = echarts.init(document.getElementById("precision"));
+      var spirit ="path://M512 172c187.68 0 340 152.32 340 340s-152.32 340-340 340-340-152.32-340-340 152.32-340 340-340z m0 67.548c-150.508 0-272.452 121.944-272.452 272.452 0 150.508 121.944 272.452 272.452 272.452 150.508 0 272.452-121.944 272.452-272.452 0-150.508-121.944-272.452-272.452-272.452z m191.308 92.48v150.504H589.52v51.228h113.788v153.68H536.48v-48.96h113.788v-55.76H536.48v-150.508h113.788V380.988H536.48v-48.96h166.828z m-215.788 0v48.96H373.732v51.224h113.788v150.508H373.732v55.76h113.788v48.96H320.692v-153.68h113.788v-51.228H320.692V332.028h166.828z"
+      var maxData = 100;
+      var option = {
+        xAxis: {
+          max: maxData,
+          splitLine: { show: false },
+          offset: 10,
+          axisLine: {
+            show: false,
+          },
+          axisLabel: {
+            show: false,
+          },
+          axisTick: { show: false },
+        },
+        yAxis: {
+          data: ["准确率", "查准率"],
+          inverse: true,
+          axisTick: { show: false },
+          axisLine: { show: false },
+          axisLabel: {
+            margin: 20,
+            color: "#111",
+            fontWeight:600,
+            fontSize: 16,
+          },
+        },
+        grid: {
+          top: 10,
+          height: 100,
+          left: 100,
+          right: 100,
+        },
+        series: [
+          {
+            // current data
+            type: "pictorialBar",
+            symbol: spirit,
+            symbolRepeat: "fixed",
+            symbolMargin: "15",
+            symbolClip: true,
+            symbolSize: 30,
+            symbolBoundingData: maxData,
+            data: [50, 88],
+            z: 10,
+          },
+          {
+            // full data
+            type: "pictorialBar",
+            itemStyle: {
+              normal: {
+                opacity: 0.2,
+              },
+            },
+            label: {
+              show: true,
+              formatter: function (params) {
+                return params.value + " %";
+              },
+              position: "right",
+              offset: [10, 0],
+              color: "rgb(194,53,49)",
+              fontSize: 18,
+            },
+            symbolRepeat: "fixed",
+            symbolMargin: "15",
+            symbol: spirit,
+            symbolSize: 30,
+            symbolBoundingData: maxData,
+            data: [50, 88],
+            z: 5,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    },
+  },
 };
 </script>
 
 <style scoped>
 @import "../assets/style/detail.css";
-@media(max-width:1280px){
-  .el-col-2{
+@media (max-width: 1280px) {
+  .el-col-2 {
     width: 25px;
     padding: 5px 0;
   }
 }
-@media(min-width:1280px){
-  .el-col-2{
+@media (min-width: 1280px) {
+  .el-col-2 {
     width: 25px;
     padding: 5px 0;
   }
 }
-@media(min-width:1600px){
-  .el-col-2{
+@media (min-width: 1600px) {
+  .el-col-2 {
     width: 35px;
   }
 }
-@media(min-width:1920px){
-  .el-col-2{
+@media (min-width: 1920px) {
+  .el-col-2 {
     width: 40px;
   }
 }

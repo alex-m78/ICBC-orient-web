@@ -36,7 +36,7 @@
     }
     
     #rightTab{
-        width: calc(100% - 400px);
+        width: calc(100% - 410px);
         display: flex;
         flex-direction: column;
     }
@@ -54,7 +54,9 @@
         flex-direction: column;
     }
     #rightTab{
-        width: calc(100% - 450px);
+        width: calc(100% - 460px);
+        display: flex;
+        flex-direction: column;
     }
     
     /* #leftMap{
@@ -80,4 +82,14 @@
     /* background-color: #fff; */
 }
 
-
+#rateChart{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+/* #precision{
+    flex: 1 1 80%;
+} */
+#stockTable{
+    flex: 1 1 60%;
+}

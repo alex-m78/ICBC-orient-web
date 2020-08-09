@@ -40,9 +40,16 @@ const getTargetCompared=data=>{
         params:data
     })
 };
-export const getModelResult= data =>{
+export const getRealResult = data => {
     return $axios({
         url:"/modelResults",
+        methods:"get",
+        params: data
+    })
+};
+export const getPreResult = data => {
+    return $axios({
+        url:"/kafkaResults",
         methods:"get",
         params: data
     })
@@ -123,7 +130,8 @@ export default {
     GetIndustry,
     // getNewStockInfo,
     getTargetCompared,
-    getModelResult,
+    getRealResult,
+    getPreResult,
     getUser,
     editUserRole,
     deleteUser,

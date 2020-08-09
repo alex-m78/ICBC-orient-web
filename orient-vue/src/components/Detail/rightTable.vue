@@ -2,7 +2,7 @@
   <div>
     <el-table id="cell-class-name" :data="stockData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
               style="width: 100%" border >
-      <el-table-column prop="symbol" label="重仓股代码" align="center"></el-table-column>
+      <el-table-column prop="ts_code" label="重仓股代码" align="center"></el-table-column>
       <el-table-column prop="stockName" label="重仓股名称" align="center"></el-table-column>
       <el-table-column prop="pb" label="市净率" align="center"></el-table-column>
       <el-table-column prop="roe" label="净资产收益率" align="center"></el-table-column>

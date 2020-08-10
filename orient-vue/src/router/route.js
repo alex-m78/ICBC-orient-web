@@ -48,7 +48,7 @@ export const dynamicRouter=[
                 path: '/detail',
                 name: 'detail',
                 component: Detail,
-                title:'股票详情',
+                title:'预测结果',
                 icon:'el-icon-s-help'
             },{
                 id:'3',

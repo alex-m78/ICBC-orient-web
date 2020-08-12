@@ -29,14 +29,15 @@
         },
         methods: {
             changePeriod: function(year, quarter){
-              console.log(this.tableData)
               // if (this.tableData == null){
               //   this.tableData.push()
               // }
-              this.tableData[0]["period"]= year + quarter
               console.log(this.tableData)
+              this.tableData[0]["period"]= year + quarter
+              
             },
             changeTableData: function(pre, real){
+                console.log(pre)
               let lengthPre = 0
               let lengthReal = 0
               if (pre !== undefined) {

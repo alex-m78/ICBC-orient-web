@@ -7,29 +7,28 @@ const moduleDetail={
         industryDataReal:[],
         predictStock:[],
         realStock:[],
-        stockDataDetail:[]
+        stockDataDetail:[],
+        accuracy:0,
+        precisionTop30:0,
     },
-    getters:{},
     mutations:{
         RealResult:(state,param)=>{
-            // state.industryDataPre=param.industryDataPre;
             state.industryDataReal=param.industryDataReal;
-            
-            // state.predictStock=param.predictStock
         },
         PreResult:(state,param)=>{
             state.stockDataDetail=param.stockDataDetail;
             state.realStock=param.realStock;
             state.predictStock=param.predictStock
+            state.accuracy=(param.accuracy*100).toFixed(2);
+            state.precisionTop30=(param.precisionTop30*100).toFixed(2);
+            console.log(state)
         }
 
     },
     actions:{
          async real_result(context,param){
-            
             var res= await getRealResult(param);
             let data=res.data.result;
-            console.log(data)
             if(data!==undefined){
                 context.commit('RealResult',data)
             }
@@ -37,7 +36,6 @@ const moduleDetail={
         async pre_result(context,param){
             let res= await getPreResult(param);
             let data = res.data.result;
-            console.log(data)
             if (data !== undefined) {
                 context.commit('PreResult',data)
             }

@@ -2,7 +2,6 @@
   <div id="navbar">
     <el-menu
       :default-active="$route.path"
-      @select="handleSelect"
       background-color="#204051"
       text-color="#e5e5e5"
       active-text-color="#ea9a96"
@@ -30,12 +29,6 @@ export default {
   computed: {
     menuList() {
       return this.$store.getters.menuList;
-    },
-  },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(this.menuList);
-      console.log(key, keyPath);
     },
   },
 };

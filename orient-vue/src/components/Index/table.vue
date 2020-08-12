@@ -2,8 +2,8 @@
    <div>
     <el-table :data="targetCompared.slice((currentPage-1)*pageSize,currentPage*pageSize)"
               :span-method="targetComparedSpanMethod">
-      <el-table-column prop="target" label="指标" align="center"></el-table-column>
-      <el-table-column prop="feature" width="130" label="子指标" align="center"></el-table-column>
+      <el-table-column width="90" prop="target" label="指标" align="center"></el-table-column>
+      <el-table-column prop="feature" width="170" label="子指标" align="center"></el-table-column>
       <el-table-column label="新进重仓股" prop="heavyStock" align="center">
         <el-table-column prop="mean1" label="均值" align="center"></el-table-column>
         <el-table-column prop="std1" label="标准差" align="center"></el-table-column>
@@ -18,7 +18,7 @@
           align="center"
         ></el-table-column>
       </el-table-column>
-      <el-table-column prop="corr" label="相关性" align="center"></el-table-column>
+      <el-table-column width="60" prop="corr" label="相关性" align="center"></el-table-column>
     </el-table>
      <div class="pagination-name" style="margin-top:5px;">
        <el-pagination align='center'
@@ -81,16 +81,8 @@ export default {
         // 获取表格数据
         var result = res.data.result;
         this.targetCompared = [];
-        console.log("123")
-        console.log(res);
         for (let data of result) {
           for (let i = 0; i < data.length; i++) {
-            // let obj = new Object();
-            // obj.meanT = data.meanT;
-            // obj.target = data.target;
-            // obj.subTarget = data.subTarget[i];
-            // obj.heavyStock = data.heavyStock[i];
-            // obj.nonHeavyStock = data.nonHeavyStock[i];
             this.targetCompared.push(data[i]);
           }
         }
@@ -108,12 +100,12 @@ export default {
       }
     },
     handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+      // console.log(`每页 ${val} 条`);
       this.currentPage = 1;
       this.pageSize = val;
     },
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
+      // console.log(`当前页: ${val}`);
       this.currentPage = val;
     },
     setPageSize(){
@@ -132,7 +124,14 @@ export default {
   flex: 1 1 60%;
   font-size: 12px;
   border-radius: 5px;
-  border: 1px solid #ececec;
+  border-left: none;
+  border-right: none;
+}
+.el-table--border::after, .el-table--group::after, .el-table::before{
+  background: none;
+}
+.el-table--border th{
+  border-right: none;
 }
 
 </style>

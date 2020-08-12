@@ -18,11 +18,9 @@ export const routes=[{
 }]
 router.addRoutes(routes);
 router.options.routes=routes
-console.log(router)
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
-    console.log(location)
     return originalPush.call(this, location).catch(err => err)
 }
 export default router

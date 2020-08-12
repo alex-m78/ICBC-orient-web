@@ -80,20 +80,18 @@ export default {
     this.changeHeaderStatus();
   },
   methods: {
-    handleEdit(index, row) {
-      console.log("enter");
-      console.log(index, row);
+    handleEdit(index) {
+      // console.log(index, row);
       this.$api.editUserRole({
         username: this.tableData[index]["username"],
         role: this.tableData[index]["role"],
       });
     },
-    handleDelete(index, row) {
-      console.log("enter");
-      console.log(index);
-      console.log(row);
-      console.log(this.tableData[index]["username"])
-      console.log(JSON.parse(sessionStorage.getItem("username")))
+    handleDelete(index) {
+      // console.log(index);
+      // console.log(row);
+      // console.log(this.tableData[index]["username"])
+      // console.log(JSON.parse(sessionStorage.getItem("username")))
       if (this.tableData[index]["username"] === JSON.parse(sessionStorage.getItem("username")))
       { alert("无法删除")}
       else{
@@ -111,7 +109,7 @@ export default {
     getTableData: function () {
       this.$api.getUser().then((res) => {
         let data = res.data.result;
-        console.log(data);
+        // console.log(data);
         this.tableData = data;
       });
     },

@@ -144,7 +144,7 @@ export default {
       this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
     },
     pieChart: function (preindustry, realindustry) {
-
+      console.log(preindustry)
       let pre_industry_names = [];
       let pre_industry_value = [];
       let real_industry_names = [];

@@ -54,6 +54,7 @@
               </el-row>
             </div>
             <div id="chart1" class="chart"></div>
+            <p>发布日：2020.01.01</p>
           </div>
           <div class="panel" id="box2">
             <div class="title">
@@ -69,9 +70,22 @@
               </el-row>
             </div>
             <div id="chart2" class="chart"></div>
+            <p>2020年第二季度预测数据</p>
           </div>
         </div>
         <div id="tableview" class="panel">
+          <div class="title">
+              <el-row :gutter="20">
+                <el-col :span="2">
+                  <div class="grid-content bg-purple">
+                    <img class="tag" src="../../src/assets/images/tag1.png" />
+                  </div>
+                </el-col>
+                <el-col :span="21">
+                  <div class="grid-content bg-purple">指标对比</div>
+                </el-col>
+              </el-row>
+            </div>
           <div id="compared_table">
             <initTable></initTable>
           </div>
@@ -125,6 +139,7 @@ export default {
         let data = res.data.result;
         // console.log("create");
         // console.log(data);
+        console.log(data)
         for(let v of data){
           this.CAAR.dayCount.push(v.dayCount);
           this.CAAR.newCar.push(v.newCar);
@@ -235,7 +250,7 @@ export default {
           series: [
             {
               type: "pie",
-              radius: ["45%", "60%"],
+              radius: ["5%", "60%"],
               center: ["50%", "40%"],
               selectedMode: "single",
               data: industry_value,

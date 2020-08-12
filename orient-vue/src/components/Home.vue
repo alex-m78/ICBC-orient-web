@@ -1,6 +1,7 @@
 <template>
   <div id="home">
-    <div id="left"><Nav ></Nav></div>
+    <loading v-if="isLoading"></loading>
+    <div id="left"><Nav></Nav></div>
     <div id="right">
       <Header ref="Header"></Header>
       <transition  name="fade" mode="out-in">
@@ -13,14 +14,21 @@
 <script>
 import Header from "./side/Header";
 import Nav from "./side/Nav";
+import loading from "./common/loading"
 export default {
   name: "Home",
   props: {
     msg: String
   },
+  computed:{
+    isLoading(){
+      return this.$store.state.isLoading
+    }
+  },
   components:{
     Nav,
-    Header
+    Header,
+    loading
   },
   methods: {
     changeHeaderIsShow: function (status) {

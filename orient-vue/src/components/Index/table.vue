@@ -2,30 +2,30 @@
    <div>
     <el-table :data="targetCompared.slice((currentPage-1)*pageSize,currentPage*pageSize)"
               :span-method="targetComparedSpanMethod">
-      <el-table-column prop="target" label="指标" header-align="center"></el-table-column>
-      <el-table-column prop="feature" width="130" label="子指标" header-align="center"></el-table-column>
-      <el-table-column label="新进重仓股" prop="heavyStock" header-align="center">
-        <el-table-column prop="mean1" label="均值" header-align="center"></el-table-column>
-        <el-table-column prop="std1" label="标准差" header-align="center"></el-table-column>
-        <el-table-column prop="len1" label="有效样本" header-align="center"></el-table-column>
+      <el-table-column prop="target" label="指标" align="center"></el-table-column>
+      <el-table-column prop="feature" width="130" label="子指标" align="center"></el-table-column>
+      <el-table-column label="新进重仓股" prop="heavyStock" align="center">
+        <el-table-column prop="mean1" label="均值" align="center"></el-table-column>
+        <el-table-column prop="std1" label="标准差" align="center"></el-table-column>
+        <el-table-column prop="len1" label="有效样本" align="center"></el-table-column>
       </el-table-column>
-      <el-table-column label="非新进重仓股" prop="nonHeavyStock" header-align="center">
-        <el-table-column prop="mean2" label="均值" header-align="center"></el-table-column>
-        <el-table-column prop="std2" label="标准差" header-align="center"></el-table-column>
+      <el-table-column label="非新进重仓股" prop="nonHeavyStock" align="center">
+        <el-table-column prop="mean2" label="均值" align="center"></el-table-column>
+        <el-table-column prop="std2" label="标准差" align="center"></el-table-column>
         <el-table-column
           prop="len2"
           label="有效样本"
-          header-align="center"
+          align="center"
         ></el-table-column>
       </el-table-column>
-      <el-table-column prop="corr" label="相关性" header-align="center"></el-table-column>
+      <el-table-column prop="corr" label="相关性" align="center"></el-table-column>
     </el-table>
      <div class="pagination-name" style="margin-top:5px;">
        <el-pagination align='center'
                       @size-change="handleSizeChange"
                       @current-change="handleCurrentChange"
                       :current-page="currentPage"
-                      :page-sizes="[3]"
+                      :page-sizes="[3,4,5]"
                       :page-size="pageSize"
                       layout="total, sizes, prev, pager, next, jumper"
                       :total="targetCompared.length">
@@ -42,12 +42,13 @@ export default {
       targetCompared: [],
       currentPage: 1, // 当前页码
       total: 20, // 总条数
-      pageSize: 3// 每页的数据条数
+      pageSize: 5// 每页的数据条数
     };
   },
   mounted() {
     // this.getNetStockInfo();
     this.targetComparedResult();
+    this.setPageSize()
   },
   computed: {
     spanArr: function () {  //判断跨行
@@ -114,6 +115,14 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
       this.currentPage = val;
+    },
+    setPageSize(){
+      let width=window.innerWidth
+      if(width<=1280){
+        this.pageSize=4
+      }else{
+        this.pageSize=5
+      }
     }
   },
 };
@@ -121,5 +130,9 @@ export default {
 <style scoped>
 .el-table {
   flex: 1 1 60%;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid #ececec;
 }
+
 </style>

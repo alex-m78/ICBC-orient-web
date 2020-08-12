@@ -9,6 +9,14 @@ import moduleDetail from './modules/detail'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    state:{
+        isLoading:false
+    },
+    mutations:{
+        LOADING(state,loading){
+            state.isLoading=loading
+        }
+    },
     modules:{
         moduleNav,
         modulesIndex,

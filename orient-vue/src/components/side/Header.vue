@@ -22,14 +22,14 @@
         </el-dropdown>
         </el-col>
     </el-row>
-    <!-- <el-row :gutter="24">
-      <el-col :span="10" :offset="1" id="page-title" v-show="isShow">
-            <h1> Hello, <span>Welcome Here</span></h1>
+    <el-row :gutter="24">
+      <el-col :span="10" id="page-title" v-show="isShow">
+            <h1><span>2020第二季度预测概率前五新进重仓股股价</span></h1>
       </el-col>
-     <el-col :span="6" :offset="7" id="page-dashboard">
-       <el-link :underline="false">Dashboard</el-link>
-     </el-col>
-    </el-row> -->
+<!--     <el-col :span="6" :offset="7" id="page-dashboard">-->
+<!--       <el-link :underline="false">Dashboard</el-link>-->
+<!--     </el-col>-->
+    </el-row>
   </div>
 </template>
 
@@ -102,7 +102,7 @@ export default {
 #headbar{
     height: 50px;
     background-color: #fff;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     border-bottom: 1px solid #ccc;
 }
 #logo {
@@ -116,8 +116,8 @@ export default {
 }
 .el-row{
   margin: 0 !important;
-  height: 50px;
-  line-height: 50px;
+  height: 30px;
+  line-height: 30px;
   /* padding: 0; */
 }
 .el-col{
@@ -131,6 +131,7 @@ export default {
 
 #page-title h1 {
   margin-bottom: 50px;
+  margin-left: 13px;
   font-size: 18px;
   padding: 14px 0;
   color: #909399;

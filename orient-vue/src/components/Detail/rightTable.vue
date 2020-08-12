@@ -39,6 +39,8 @@ export default {
       pageSize: 10, // 每页的数据条数
     };
   },
+  
+
   computed:{
     stockData(){
       return this.$store.state.moduleDetail.stockDataDetail

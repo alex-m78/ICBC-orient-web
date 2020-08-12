@@ -40,13 +40,13 @@ const getTargetCompared=data=>{
         params:data
     })
 };
-// export const getRealResult = data => {
-//     return $axios({
-//         url:"/modelResults",
-//         methods:"get",
-//         params: data
-//     })
-// };
+export const getRealResult = data => {
+    return $axios({
+        url:"/modelResults",
+        methods:"get",
+        params: data
+    })
+};
 export const getPreResult = data => {
     return $axios({
         url:"/kafkaResults",

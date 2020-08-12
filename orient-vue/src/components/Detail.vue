@@ -124,12 +124,15 @@ export default {
       return this.$store.state.moduleDetail.precisionTop30
     }
   },
+  beforeMount(){
+    this.setLoading()
+  },
   mounted() {
     this.changeHeaderStatus()
     // this.getStockData();
     this.getRealStockData()
     this.getPreStockData()
-    this.setLoading()
+    
   },
   methods: {
     getRealStockData: async function(){

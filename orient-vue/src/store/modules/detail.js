@@ -1,5 +1,5 @@
 
-import {getRealResult, getPreResult} from "@/requests/server"
+import {getRealResult,getPreResult} from "@/requests/server"
 
 const moduleDetail={
     state:{

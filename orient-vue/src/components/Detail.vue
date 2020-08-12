@@ -130,8 +130,7 @@ export default {
         quarter:this.sql_quarter
       }
       await this.$store.dispatch("real_result",param)
-      this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
-      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
+      // this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
     },
     getPreStockData: async function(){
       let param={
@@ -140,7 +139,8 @@ export default {
       }
       await this.$store.dispatch("pre_result",param)
       this.pieChart(this.$store.state.moduleDetail.industryDataPre,this.$store.state.moduleDetail.industryDataReal)
-      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
+      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock,
+          this.$store.state.moduleDetail.realStock)
       this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
     },
     pieChart: function (preindustry, realindustry) {

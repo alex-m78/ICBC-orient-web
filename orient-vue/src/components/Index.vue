@@ -597,7 +597,7 @@ export default {
        var myChart = echarts.init(document.getElementById("chart1"));
       if(text==='CAR'){
         $('#CAAR_Change').text('AR')
-       
+
         myChart.setOption({
           legend: {
             data: ["新进重仓股CAR", "非重仓股CAR"],

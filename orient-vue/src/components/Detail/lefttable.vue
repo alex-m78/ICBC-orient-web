@@ -37,6 +37,7 @@
               console.log(this.tableData)
             },
             changeTableData: function(pre, real){
+              console.log("left")
               let lengthPre = 0
               let lengthReal = 0
               if (pre !== undefined) {
@@ -46,26 +47,28 @@
                 lengthReal = real.length
               }
                 let len = Math.max(lengthPre, lengthReal)
+              console.log(len)
                 let periodData = this.tableData[0]["period"]
                 this.tableData.splice(0,this.tableData.length)
                 let tempPre = "";
                 let tempReal = "";
                 for(let i=0; i<len; i++){
                     if (i < lengthPre){
-                        tempPre=pre[i]
+                        tempPre=pre[i]["name_predicted"]
                     }
                     else {
                         tempPre=""
                     }
                     if (i < lengthReal) {
-                        tempReal=real[i]
+                        tempReal=real[i]["name_real"]
                     }
                     else {
                         tempReal=""
                     }
                     this.tableData.push({"period": periodData, "predictStock": tempPre, "realStock": tempReal})
                 }
-                console.log(this.tableData)
+                console.log(tempPre)
+                console.log(tempReal)
                 this.spanLength = len
             },
             objectSpanMethod({rowIndex, columnIndex }) {

@@ -103,6 +103,7 @@ import compareTable from "../components/Detail/lefttable.vue";
 import echarts from "echarts";
 import stockInfo from "../components/Detail/rightTable.vue";
 import bus from "../utils/bus";
+import {Message} from "element-ui";
 // import pagination from "../components/common/pagination"
 
 export default {
@@ -288,8 +289,8 @@ export default {
                 style: {
                   fill: "#999",
                   text: [
-                    "外圈展示实际新进重仓股排行前5的行业占比",
-                    "内圈展示预测新进重仓股排行前5的行业占比",
+                    "外圈展示实际新进重仓股行业占比",
+                    "内圈展示预测新进重仓股行业占比",
                   ].join("\n"),
                   font: "14px Microsoft YaHei",
                 },
@@ -406,7 +407,7 @@ export default {
       if (this.sql_year === 2020) {
         if (this.sql_quarter === 3 || this.sql_quarter === 4)
         {
-          alert("数据不足，无法预测")
+          Message.error("数据不足，无法预测")
         }
         else{
           this.getPreStockData();

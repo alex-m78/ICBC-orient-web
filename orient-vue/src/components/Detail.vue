@@ -119,19 +119,19 @@ export default {
   mounted() {
     this.changeHeaderStatus()
     // this.getStockData();
-    this.getRealStockData()
+    // this.getRealStockData()
     this.getPreStockData()
     this.precision();
   },
   methods: {
-    getRealStockData: async function(){
-      let param={
-        year:this.sql_year,
-        quarter:this.sql_quarter
-      }
-      await this.$store.dispatch("real_result",param)
-      // this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
-    },
+    // getRealStockData: async function(){
+    //   let param={
+    //     year:this.sql_year,
+    //     quarter:this.sql_quarter
+    //   }
+    //   await this.$store.dispatch("real_result",param)
+    //   // this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
+    // },
     getPreStockData: async function(){
       let param={
         year:this.sql_year,
@@ -297,7 +297,6 @@ export default {
       this.sql_year = Number(this.year.slice(0, 4));
       // console.log(this.sql_year);
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
-      this.getRealStockData();
       this.getPreStockData();
     },
     changeQuarter() {
@@ -313,7 +312,16 @@ export default {
       }
       console.log(this.sql_quarter)
       this.$refs.compareTable.changePeriod(this.year,this.quarter)
-      this.getRealStockData();
+      // this.getRealStockData();
+      // if (this.sql_year === 2020) {
+      //   if (this.sql_quarter === 3 || 4)
+      //   {
+      //     alert("数据不足，无法预测")
+      //   }
+      //   else{
+      //     this.getPreStockData();
+      //   }
+      // }
       this.getPreStockData();
     },
     changeHeaderStatus: function () {

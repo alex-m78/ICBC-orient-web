@@ -25,7 +25,7 @@
                       @size-change="handleSizeChange"
                       @current-change="handleCurrentChange"
                       :current-page="currentPage"
-                      :page-sizes="[3,4,5]"
+                      :page-sizes="[3,4,5,6]"
                       :page-size="pageSize"
                       layout="total, sizes, prev, pager, next, jumper"
                       :total="targetCompared.length">
@@ -112,8 +112,10 @@ export default {
       let width=window.innerWidth
       if(width<=1280){
         this.pageSize=4
-      }else{
+      }else if(width<=1600){
         this.pageSize=5
+      }else{
+        this.pageSize=6
       }
     }
   },

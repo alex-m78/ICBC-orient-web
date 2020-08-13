@@ -15,7 +15,7 @@
                 </div>
               </el-col>
               <el-col :span="20">
-                <div class="grid-content bg-purple">基金重仓股的基金数量分布</div>
+                <div class="grid-content bg-purple">基金重仓股占股票市值比例的数量分布</div>
               </el-col>
             </el-row>
           </div>
@@ -285,7 +285,7 @@ export default {
         let source = [];
         source.push(["被基金持有数", "被基金持有数", "重仓股名称"]);
         let maxCount = 0;
-        for (var i = 0; i < 10; i++) {
+        for (var i = 9; i >= 0; i--) {
           source.push([
             data[i]["count"],
             data[i]["count"],

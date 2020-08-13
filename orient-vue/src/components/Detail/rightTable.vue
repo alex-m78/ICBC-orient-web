@@ -21,7 +21,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-sizes="[1,5,8,10]"
+        :page-sizes="[7,9,10,11]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="stockData.length"
@@ -68,6 +68,8 @@ export default {
       let width=window.innerWidth;
       if(width<=1280){
         this.pageSize=7
+      }else if(width<=1600){
+        this.pageSize=9
       }else{
         this.pageSize=11
       }

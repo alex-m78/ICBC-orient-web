@@ -109,42 +109,57 @@ export default {
       year: "2019年",
       quarter: "第三季度",
       sql_year: 2019,
-      sql_quarter: 3,
+      sql_quarter: 3
     };
   },
   components: {
     compareTable,
     stockInfo,
   },
+  computed:{
+    accuracy(){
+      return this.$store.state.moduleDetail.accuracy
+    },
+    precisionTop30(){
+      return this.$store.state.moduleDetail.precisionTop30
+    }
+  },
+  beforeMount(){
+    this.setLoading()
+  },
   mounted() {
     this.changeHeaderStatus()
     // this.getStockData();
-    // this.getRealStockData()
+    this.getRealStockData()
     this.getPreStockData()
-    this.precision();
+    
   },
   methods: {
-    // getRealStockData: async function(){
-    //   let param={
-    //     year:this.sql_year,
-    //     quarter:this.sql_quarter
-    //   }
-    //   await this.$store.dispatch("real_result",param)
-    //   // this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
-    // },
+    getRealStockData: async function(){
+      let param={
+        year:this.sql_year,
+        quarter:this.sql_quarter
+      }
+      await this.$store.dispatch("real_result",param)
+      this.pieChart(this.$store.state.moduleDetail.industryDataPre, this.$store.state.moduleDetail.industryDataReal)
+      // this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
+    },
     getPreStockData: async function(){
       let param={
         year:this.sql_year,
         quarter:this.sql_quarter
       }
       await this.$store.dispatch("pre_result",param)
+      this.$store.commit('LOADING',false)
+      console.log(this.$store.state.moduleDetail.accuracy)
+      this.precision()
       this.pieChart(this.$store.state.moduleDetail.industryDataPre,this.$store.state.moduleDetail.industryDataReal)
-      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock,
-          this.$store.state.moduleDetail.realStock)
+      this.$refs.compareTable.changePeriod(this.year, this.quarter);
+      this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
       this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
     },
     pieChart: function (preindustry, realindustry) {
-      console.log(preindustry)
+      // console.log(preindustry)
       let pre_industry_names = [];
       let pre_industry_value = [];
       let real_industry_names = [];
@@ -297,6 +312,7 @@ export default {
       this.sql_year = Number(this.year.slice(0, 4));
       // console.log(this.sql_year);
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
+      this.getRealStockData();
       this.getPreStockData();
     },
     changeQuarter() {
@@ -310,18 +326,9 @@ export default {
       } else {
         this.sql_quarter = 4;
       }
-      console.log(this.sql_quarter)
+      // console.log(this.sql_quarter)
       this.$refs.compareTable.changePeriod(this.year,this.quarter)
-      // this.getRealStockData();
-      // if (this.sql_year === 2020) {
-      //   if (this.sql_quarter === 3 || 4)
-      //   {
-      //     alert("数据不足，无法预测")
-      //   }
-      //   else{
-      //     this.getPreStockData();
-      //   }
-      // }
+      this.getRealStockData();
       this.getPreStockData();
     },
     changeHeaderStatus: function () {
@@ -331,6 +338,7 @@ export default {
       var myChart = echarts.init(document.getElementById("precision"));
       var spirit ="path://M512 172c187.68 0 340 152.32 340 340s-152.32 340-340 340-340-152.32-340-340 152.32-340 340-340z m0 67.548c-150.508 0-272.452 121.944-272.452 272.452 0 150.508 121.944 272.452 272.452 272.452 150.508 0 272.452-121.944 272.452-272.452 0-150.508-121.944-272.452-272.452-272.452z m191.308 92.48v150.504H589.52v51.228h113.788v153.68H536.48v-48.96h113.788v-55.76H536.48v-150.508h113.788V380.988H536.48v-48.96h166.828z m-215.788 0v48.96H373.732v51.224h113.788v150.508H373.732v55.76h113.788v48.96H320.692v-153.68h113.788v-51.228H320.692V332.028h166.828z"
       var maxData = 100;
+      console.log([this.accuracy,this.precisionTop30])
       var option = {
         xAxis: {
           max: maxData,
@@ -372,7 +380,7 @@ export default {
             symbolClip: true,
             symbolSize: 30,
             symbolBoundingData: maxData,
-            data: [50, 88],
+            data: [this.accuracy,this.precisionTop30],
             z: 10,
           },
           {
@@ -398,13 +406,17 @@ export default {
             symbol: spirit,
             symbolSize: 30,
             symbolBoundingData: maxData,
-            data: [50, 88],
+            data: [this.accuracy,this.precisionTop30],
             z: 5,
           },
         ],
       };
       myChart.setOption(option);
     },
+
+    setLoading:function(){
+      this.$store.commit('LOADING',true)
+    }
   },
 };
 </script>

@@ -101,7 +101,7 @@ export default {
   name: "Login",
   data() {
     var validatePass = (rule, value, callback) => {
-      console.log(value);
+      // console.log(value);
       if (value === "") {
         callback(new Error("请输入密码"));
       } else {
@@ -112,7 +112,7 @@ export default {
       }
     };
     var isSame = (rule, value, callback) => {
-      console.log(value);
+      // console.log(value);
       if (value === "") {
         callback(new Error("请再次输入密码"));
       } else if (value !== this.signUpForm.password) {
@@ -162,7 +162,7 @@ export default {
           .Login(loginParams)
           .then((res) => {
             // debugger;
-            console.log(res);
+            // console.log(res);
             let { code, msg } = res.data;
             let headers = res.headers;
             let token = headers.token;

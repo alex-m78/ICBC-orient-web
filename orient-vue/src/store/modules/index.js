@@ -17,7 +17,6 @@ const moduleIndex={
         // 预测前五股票七日曲线
         WEEKINFO:(state,param)=>{
             state.stockWeekInfo=param.result
-            console.log(state.stockWeekInfo)
         },
         // 新进股信息
         NEWSTOCKINFO:(state,param)=>{

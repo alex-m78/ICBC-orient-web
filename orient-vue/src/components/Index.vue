@@ -139,7 +139,7 @@ export default {
         let data = res.data.result;
         // console.log("create");
         // console.log(data);
-        console.log(data)
+        // console.log(data)
         for(let v of data){
           this.CAAR.dayCount.push(v.dayCount);
           this.CAAR.newCar.push(v.newCar);
@@ -204,9 +204,9 @@ export default {
     },
     pieChart: function () {
       this.$api.GetIndustry().then((res) => {
-        console.log(res);
+        // console.log(res);
         let data = res.data.result;
-        console.log(data);
+        // console.log(data);
         let industry_names = [];
         let industry_value = [];
         for (let i = 0; i < 5; i++) {
@@ -279,9 +279,9 @@ export default {
       // let token = sessionStorage.getItem("token");
       // // console.log(token);
       this.$api.GetStockHold().then((res) => {
-        console.log(res);
+        // console.log(res);
         let data = res.data.result;
-        console.log(data);
+        // console.log(data);
         let source = [];
         source.push(["被基金持有数", "被基金持有数", "重仓股名称"]);
         let maxCount = 0;
@@ -356,9 +356,9 @@ export default {
     },
     getStockQuarter: function () {
       this.$api.getStockQuarter().then((res) => {
-        console.log(res);
+        // console.log(res);
         let data = res.data.result;
-        console.log(data);
+        // console.log(data);
         let option = null;
         let date = [];
         let value1 = [];
@@ -370,7 +370,7 @@ export default {
         for (let i = 0; i < 16; i++) {
           date.push(data[i]["endDate"]);
         }
-        console.log(date);
+        // console.log(date);
         for (let j = 0; j < 16; j++) {
           value1.push(data[j]["end1"]);
           value2.push(data[j]["end2"]);
@@ -379,9 +379,9 @@ export default {
           value5.push(data[j]["end5"]);
           value6.push(data[j]["end6"]);
         }
-        console.log(value1);
-        console.log(value2);
-        console.log(value3);
+        // console.log(value1);
+        // console.log(value2);
+        // console.log(value3);
         var dom = document.getElementById("chart4");
         var myChart = echarts.init(dom);
         /*
@@ -631,7 +631,7 @@ export default {
           ],
         })
       }
-      console.log(text)
+      // console.log(text)
     }
   },
 };

@@ -41,10 +41,8 @@ export default {
                     });
                     // 如果有该用户
                     if (hasUser) {
-                        console.log("有");
                         resolve([200, { code: 200, msg: '登录成功', user }]);
                     } else { // 如果没有该用户
-                        console.log("无");
                         resolve([200, { code: 500, msg: '账号错误' }])
                     }
                 }, 500);

@@ -13,7 +13,7 @@ export default {
       return "cellchart" + Math.random() * 100000;
     },
     weekStock(){
-      console.log(this.$attrs)
+      // console.log(this.$attrs)
       return this.$attrs.weekStock
     }
   },

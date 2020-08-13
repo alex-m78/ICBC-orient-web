@@ -31,11 +31,11 @@ export default {
             .Login(loginParams)
             .then(res => {
               // debugger;
-              console.log(res);
+              // console.log(res);
               let { code, msg } = res.data;
               let headers = res.headers
               let token = headers.token
-              console.log(token)
+              // console.log(token)
               if (code === '200') {
                 // elementui中提示组件
                 this.$message({
@@ -43,10 +43,10 @@ export default {
                   message: msg
                 });
                 // 登陆成功，用户信息就保存在sessionStorage中
-                console.log("success");
+                // console.log("success");
                 sessionStorage.setItem("token", JSON.stringify(token));
                 sessionStorage.setItem("username", JSON.stringify(loginParams.username));
-                console.log("letsgo");
+                // console.log("letsgo");
                 // 跳转到后台主页面
                 this.$router.push({ path: "/" });
               } else {

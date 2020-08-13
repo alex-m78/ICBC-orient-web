@@ -59,7 +59,7 @@ export default {
       this.$router.push({ path: "/manage" })
     },
     Logout: function (command) {
-      console.log(command)
+      // console.log(command)
       if (command === "c"){
         sessionStorage.clear()
         // 跳转到登录页
@@ -81,7 +81,7 @@ export default {
               type: 'success',
               message: '您的意见是: ' + value
             });
-            console.log(value)
+            // console.log(value)
             this.feedback = value
           }).catch(() => {
             this.$message({

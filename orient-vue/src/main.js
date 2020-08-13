@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
                 router.addRoutes(store.state.moduleNav.dynamicRouterMap)
                 router.options.routes=store.state.moduleNav.staticRouterMap
             })
-            console.log(router)
+            // console.log(router)
             next()
             // if (to.path === '/manage') {
             //     alert(role == '"admin"')

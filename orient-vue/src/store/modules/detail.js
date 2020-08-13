@@ -1,5 +1,5 @@
 
-import {getRealResult,getPreResult} from "@/requests/server"
+import {getPreResult} from "@/requests/server"
 
 const moduleDetail={
     state:{
@@ -12,13 +12,18 @@ const moduleDetail={
         precisionTop30:0,
     },
     mutations:{
-        RealResult:(state,param)=>{
-            state.industryDataReal=param.industryDataReal;
-        },
+        // RealResult:(state,param)=>{
+        //     // state.industryDataPre=param.industryDataPre;
+        //
+        //
+        //     // state.predictStock=param.predictStock
+        // },
         PreResult:(state,param)=>{
             state.stockDataDetail=param.stockDataDetail;
             state.realStock=param.realStock;
             state.predictStock=param.predictStock
+            state.industryDataReal=param.industryDataReal;
+            state.industryDataPre=param.industryDataPre;
             state.accuracy=(param.accuracy*100).toFixed(2);
             state.precisionTop30=(param.precisionTop30*100).toFixed(2);
             console.log(state)
@@ -26,13 +31,15 @@ const moduleDetail={
 
     },
     actions:{
-         async real_result(context,param){
-            var res= await getRealResult(param);
-            let data=res.data.result;
-            if(data!==undefined){
-                context.commit('RealResult',data)
-            }
-        },
+        //  async real_result(context,param){
+        //
+        //     var res= await getRealResult(param);
+        //     let data=res.data.result;
+        //     console.log(data)
+        //     if(data!==undefined){
+        //         context.commit('RealResult',data)
+        //     }
+        // },
         async pre_result(context,param){
             let res= await getPreResult(param);
             let data = res.data.result;

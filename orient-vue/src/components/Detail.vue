@@ -23,6 +23,9 @@
             <el-radio-button label="第四季度"></el-radio-button>
           </el-radio-group>
         </el-col>
+        <el-col :span="1.5" style="float:right">
+          <el-button type="primary" icon="el-icon-search" @click="query">查询</el-button>
+        </el-col>
       </el-row>
     </div>
     <div id="detail_main">
@@ -109,42 +112,43 @@ export default {
       year: "2019年",
       quarter: "第三季度",
       sql_year: 2019,
-      sql_quarter: 3
+      sql_quarter: 3,
     };
   },
   components: {
     compareTable,
     stockInfo,
   },
-  computed:{
-    accuracy(){
-      return this.$store.state.moduleDetail.accuracy
+  computed: {
+    accuracy() {
+      return this.$store.state.moduleDetail.accuracy;
     },
-    precisionTop30(){
-      return this.$store.state.moduleDetail.precisionTop30
-    }
+    precisionTop30() {
+      return this.$store.state.moduleDetail.precisionTop30;
+    },
   },
-  beforeMount(){
-    this.setLoading()
+  beforeMount() {
+    this.setLoading();
   },
   mounted() {
-    this.changeHeaderStatus()
+    this.changeHeaderStatus();
     // this.getStockData();
     // this.getRealStockData()
-    this.getPreStockData()
-    
+    this.getPreStockData();
   },
   methods: {
-    getPreStockData: async function(){
-      let param={
-        year:this.sql_year,
-        quarter:this.sql_quarter
-      }
-      await this.$store.dispatch("pre_result",param)
-      this.$store.commit('LOADING',false)
-      console.log(this.$store.state.moduleDetail.accuracy)
-      this.precision()
-      this.pieChart(this.$store.state.moduleDetail.industryDataPre,this.$store.state.moduleDetail.industryDataReal)
+    getPreStockData: async function () {
+      let param = {
+        year: this.sql_year,
+        quarter: this.sql_quarter,
+      };
+      await this.$store.dispatch("pre_result", param);
+      this.$store.commit("LOADING", false);
+      this.precision();
+      this.pieChart(
+        this.$store.state.moduleDetail.industryDataPre,
+        this.$store.state.moduleDetail.industryDataReal
+      );
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
       this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
       // this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
@@ -155,7 +159,7 @@ export default {
       let pre_industry_value = [];
       let real_industry_names = [];
       let real_industry_value = [];
-      if (preindustry !== undefined){
+      if (preindustry !== undefined) {
         for (let i = 0; i < preindustry.length; i++) {
           pre_industry_names.push(preindustry[i]["industryName"]);
           pre_industry_value.push({
@@ -299,37 +303,28 @@ export default {
       }
     },
     changeYear: function () {
-      // console.log(this.year);
       this.sql_year = Number(this.year.slice(0, 4));
-      // console.log(this.sql_year);
-      this.$refs.compareTable.changePeriod(this.year, this.quarter);
-      // this.getRealStockData();
-      this.getPreStockData();
     },
     changeQuarter() {
       if (this.quarter === "第一季度") {
         this.sql_quarter = 1;
-      }
-      if (this.quarter === "第三季度") {
+      } else if (this.quarter === "第三季度") {
         this.sql_quarter = 3;
       } else if (this.quarter === "第二季度") {
         this.sql_quarter = 2;
       } else {
         this.sql_quarter = 4;
       }
-      // console.log(this.sql_quarter)
-      this.$refs.compareTable.changePeriod(this.year,this.quarter)
-      // this.getRealStockData();
-      this.getPreStockData();
     },
     changeHeaderStatus: function () {
       bus.$emit("isShowStatus", false);
     },
     precision: function () {
       var myChart = echarts.init(document.getElementById("precision"));
-      var spirit ="path://M512 172c187.68 0 340 152.32 340 340s-152.32 340-340 340-340-152.32-340-340 152.32-340 340-340z m0 67.548c-150.508 0-272.452 121.944-272.452 272.452 0 150.508 121.944 272.452 272.452 272.452 150.508 0 272.452-121.944 272.452-272.452 0-150.508-121.944-272.452-272.452-272.452z m191.308 92.48v150.504H589.52v51.228h113.788v153.68H536.48v-48.96h113.788v-55.76H536.48v-150.508h113.788V380.988H536.48v-48.96h166.828z m-215.788 0v48.96H373.732v51.224h113.788v150.508H373.732v55.76h113.788v48.96H320.692v-153.68h113.788v-51.228H320.692V332.028h166.828z"
+      myChart.setOption({},true)
+      var spirit =
+        "path://M512 172c187.68 0 340 152.32 340 340s-152.32 340-340 340-340-152.32-340-340 152.32-340 340-340z m0 67.548c-150.508 0-272.452 121.944-272.452 272.452 0 150.508 121.944 272.452 272.452 272.452 150.508 0 272.452-121.944 272.452-272.452 0-150.508-121.944-272.452-272.452-272.452z m191.308 92.48v150.504H589.52v51.228h113.788v153.68H536.48v-48.96h113.788v-55.76H536.48v-150.508h113.788V380.988H536.48v-48.96h166.828z m-215.788 0v48.96H373.732v51.224h113.788v150.508H373.732v55.76h113.788v48.96H320.692v-153.68h113.788v-51.228H320.692V332.028h166.828z";
       var maxData = 100;
-      console.log([this.accuracy,this.precisionTop30])
       var option = {
         xAxis: {
           max: maxData,
@@ -351,7 +346,7 @@ export default {
           axisLabel: {
             margin: 20,
             color: "#111",
-            fontWeight:600,
+            fontWeight: 600,
             fontSize: 16,
           },
         },
@@ -371,7 +366,7 @@ export default {
             symbolClip: true,
             symbolSize: 30,
             symbolBoundingData: maxData,
-            data: [this.accuracy,this.precisionTop30],
+            data: [this.accuracy, this.precisionTop30],
             z: 10,
           },
           {
@@ -384,9 +379,7 @@ export default {
             },
             label: {
               show: true,
-              formatter: function (params) {
-                return params.value + " %";
-              },
+              formatter: (params) => params.value + " %",
               position: "right",
               offset: [10, 0],
               color: "rgb(194,53,49)",
@@ -397,17 +390,21 @@ export default {
             symbol: spirit,
             symbolSize: 30,
             symbolBoundingData: maxData,
-            data: [this.accuracy,this.precisionTop30],
+            data: [this.accuracy, this.precisionTop30],
             z: 5,
           },
         ],
       };
       myChart.setOption(option);
     },
-
-    setLoading:function(){
-      this.$store.commit('LOADING',true)
-    }
+    setLoading: function () {
+      this.$store.commit("LOADING", true);
+    },
+    // 查询
+    query: function () {
+      this.$refs.compareTable.changePeriod(this.year, this.quarter);
+      this.getPreStockData();
+    },
   },
 };
 </script>

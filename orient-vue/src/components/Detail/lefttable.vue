@@ -19,25 +19,17 @@
         name: "lefttable",
         data() {
             return {
-                tableData: [{
-                    period: "2020年第一季度",
-                    predictStock: '股票1',
-                    realStock: '股票2'
-                }],
+                period:"2020年第一季度",
+                tableData: [],
                 spanLength: 1
             }
         },
         methods: {
             changePeriod: function(year, quarter){
-              // if (this.tableData == null){
-              //   this.tableData.push()
-              // }
               console.log(this.tableData)
-              this.tableData[0]["period"]= year + quarter
-              
+              this.period= year + quarter
             },
             changeTableData: function(pre, real){
-              console.log("left")
               let lengthPre = 0
               let lengthReal = 0
               if (pre !== undefined) {
@@ -47,9 +39,9 @@
                 lengthReal = real.length
               }
                 let len = Math.max(lengthPre, lengthReal)
-              console.log(len)
-                let periodData = this.tableData[0]["period"]
-                this.tableData.splice(0,this.tableData.length)
+            //   console.log(len)
+                let periodData = this.period
+                this.tableData=[]
                 let tempPre = "";
                 let tempReal = "";
                 for(let i=0; i<len; i++){
@@ -67,8 +59,8 @@
                     }
                     this.tableData.push({"period": periodData, "predictStock": tempPre, "realStock": tempReal})
                 }
-                console.log(tempPre)
-                console.log(tempReal)
+                // console.log(tempPre)
+                // console.log(tempReal)
                 this.spanLength = len
             },
             objectSpanMethod({rowIndex, columnIndex }) {

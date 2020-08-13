@@ -11,7 +11,7 @@
       <el-table-column prop="pb" label="市净率" align="center"></el-table-column>
       <el-table-column prop="roe" label="净资产收益率" align="center"></el-table-column>
       <el-table-column prop="pettm" label="市盈率" align="center" min-width="95"></el-table-column>
-      <el-table-column prop="netAssert" label="每股净资产" align="center"></el-table-column>
+      <el-table-column prop="eps" label="每股收益" align="center"></el-table-column>
       <el-table-column prop="totalWorth" label="总市值" align="center"></el-table-column>
     </el-table>
     <!--   分页器 -->

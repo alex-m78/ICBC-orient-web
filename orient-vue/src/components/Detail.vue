@@ -303,7 +303,15 @@ export default {
       this.sql_year = Number(this.year.slice(0, 4));
       // console.log(this.sql_year);
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
-      // this.getRealStockData();
+      if (this.sql_year === 2020) {
+        if (this.sql_quarter === 3 || this.sql_quarter === 4)
+        {
+          alert("数据不足，无法预测")
+        }
+        else{
+          this.getPreStockData();
+        }
+      }
       this.getPreStockData();
     },
     changeQuarter() {
@@ -319,8 +327,14 @@ export default {
       }
       // console.log(this.sql_quarter)
       this.$refs.compareTable.changePeriod(this.year,this.quarter)
-      // this.getRealStockData();
-      this.getPreStockData();
+      if (this.sql_quarter === 1){
+        alert("数据不足，无法预测")
+      }
+      else
+      {
+        this.getPreStockData();
+      }
+      // this.getPreStockData();
     },
     changeHeaderStatus: function () {
       bus.$emit("isShowStatus", false);

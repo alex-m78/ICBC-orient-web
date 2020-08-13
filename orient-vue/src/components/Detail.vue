@@ -403,6 +403,15 @@ export default {
     // 查询
     query: function () {
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
+      if (this.sql_year === 2020) {
+        if (this.sql_quarter === 3 || this.sql_quarter === 4)
+        {
+          alert("数据不足，无法预测")
+        }
+        else{
+          this.getPreStockData();
+        }
+      }
       this.getPreStockData();
     },
   },

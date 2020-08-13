@@ -33,12 +33,18 @@ const moduleDetail={
                 context.commit('RealResult',data)
             }
         },
-        async pre_result(context,param){
-            let res= await getPreResult(param);
-            let data = res.data.result;
-            if (data !== undefined) {
-                context.commit('PreResult',data)
-            }
+        pre_result(context,param){
+            async function queryData(){ return await getPreResult(param);}
+            queryData().then(res=>{
+                console.log(res)
+                let data = res.data.result;
+                if (data) {
+                    context.commit('PreResult',data)
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
+            
         }
     }
 }

@@ -156,7 +156,7 @@ export default {
       this.pieChart(this.$store.state.moduleDetail.industryDataPre,this.$store.state.moduleDetail.industryDataReal)
       this.$refs.compareTable.changePeriod(this.year, this.quarter);
       this.$refs.compareTable.changeTableData(this.$store.state.moduleDetail.predictStock, this.$store.state.moduleDetail.realStock)
-      this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
+      // this.$refs.stockInfo.changeTableData(this.$store.state.moduleDetail.stockDataDetail)
     },
     pieChart: function (preindustry, realindustry) {
       // console.log(preindustry)

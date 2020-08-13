@@ -50,11 +50,11 @@ export default {
     this.setPageSize()
   },
   methods: {
-    changeTableData: function (stockData) {
-      // console.log("enter")
-      this.stockData = stockData;
-      console.log(this.stockData);
-    },
+    // changeTableData: function (stockData) {
+    //   // console.log("enter")
+    //   this.stockData = stockData;
+    //   console.log(this.stockData);
+    // },
     handleSizeChange(val) {
       // console.log(`每页 ${val} 条`);
       this.currentPage = 1;

@@ -6,17 +6,17 @@
 <!--          <el-button slot="append" icon="el-icon-search" @click="gogogo"></el-button>-->
 <!--        </el-input>-->
 <!--      </el-col>-->
-<!--      <el-col :span="2" :offset="9">-->
-<!--      <el-badge :value="3" class="news"></el-badge>-->
-<!--          <el-avatar src=".../../src/assets/images/photo.png"></el-avatar>-->
-<!--      </el-col>-->
+      <el-col :span="2" :offset="9">
+      <el-badge :value="3" class="news"></el-badge>
+          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+      </el-col>
       <el-col style="width:80px">
         <el-dropdown @command="Logout">
           <span class="el-dropdown-link">{{username}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="a">Feedback</el-dropdown-item>
-<!--            <el-dropdown-item command="b">Blog Posts</el-dropdown-item>-->
+            <el-dropdown-item command="b">share</el-dropdown-item>
             <el-dropdown-item divided command="c">Logout</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -55,9 +55,9 @@ export default {
     })
   },
   methods: {
-    gogogo: function () {
-      this.$router.push({ path: "/manage" })
-    },
+    // gogogo: function () {
+    //   this.$router.push({ path: "/manage" })
+    // },
     Logout: function (command) {
       // console.log(command)
       if (command === "c"){

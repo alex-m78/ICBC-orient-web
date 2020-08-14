@@ -5,6 +5,7 @@ import Login from "@/components/Login"
 import index from "@/components/Index"
 import Detail from "@/components/Detail"
 import Manage from "@/components/Manage"
+import Search from "@/components/Search";
 // const role=sessionStorage.getItem("role")
 
 Vue.use(Router);
@@ -48,7 +49,8 @@ export const dynamicRouter=[
                 component: Detail,
                 title:'预测结果',
                 icon:'el-icon-s-help'
-            },{
+            },
+            {
                 id:'3',
                 path: '/manage',
                 name: 'manage',
@@ -58,6 +60,14 @@ export const dynamicRouter=[
                 meta:{
                     role:'admin'
                 }
+            },
+            {
+                id: '4',
+                path: '/search',
+                name: 'search',
+                component: Search,
+                title: '原始数据',
+                icon: 'el-icon-s-data',
             }
         ]
     }

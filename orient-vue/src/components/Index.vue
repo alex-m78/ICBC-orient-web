@@ -250,7 +250,7 @@ export default {
           series: [
             {
               type: "pie",
-              radius: ["5%", "60%"],
+              radius: ["40%", "60%"],
               center: ["50%", "40%"],
               selectedMode: "single",
               data: industry_value,

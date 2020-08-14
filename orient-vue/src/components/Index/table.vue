@@ -42,7 +42,7 @@ export default {
       targetCompared: [],
       currentPage: 1, // 当前页码
       total: 20, // 总条数
-      pageSize: 5// 每页的数据条数
+      pageSize: 8// 每页的数据条数
     };
   },
   mounted() {
@@ -111,11 +111,11 @@ export default {
     setPageSize(){
       let width=window.innerWidth
       if(width<=1280){
-        this.pageSize=4
-      }else if(width<=1600){
         this.pageSize=5
-      }else{
+      }else if(width<=1600){
         this.pageSize=6
+      }else{
+        this.pageSize=8
       }
     }
   },

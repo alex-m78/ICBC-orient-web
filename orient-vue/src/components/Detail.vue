@@ -24,7 +24,7 @@
           </el-radio-group>
         </el-col>
         <el-col :span="1.5" style="float:right">
-          <el-button type="primary" icon="el-icon-search" @click="query">查询</el-button>
+          <el-button type="primary" icon="el-icon-search" @click="query">预测</el-button>
         </el-col>
       </el-row>
     </div>
@@ -184,18 +184,21 @@ export default {
       var myChart = echarts.init(dom);
       var option = {
         color: [
-          "#fc9d9d",
-          "#ffa36c",
-          "#ebdc87",
-          "#80bdab",
-          "#fbc490",
-          "#d291bc",
-          "#fa7d09",
-          "#8bcdcd",
-          "#bac964",
-          "#dbc6eb",
-          "#abc2e8",
-          "#ad6989",
+          "#00b7c2",
+          "#6983aa",
+          "#537ec5",
+          "#709fb0",
+          "#0f4c75",
+          "#30475e",
+          "#dddddd",
+          "#84a9ac",
+          "#1f4068",
+          "#4cbbb9",
+          "#3282b8",
+          "#6983aa",
+          "#1b6ca8",
+          "#b4f2e1",
+          "#00909e"
         ],
         tooltip: {
           trigger: "item",

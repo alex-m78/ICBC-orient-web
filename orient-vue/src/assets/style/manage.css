@@ -10,18 +10,19 @@
 }
 #opinions{
     width: 400px;
+    overflow-y:scroll;
 }
 #cards{
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow:auto;
+    
 }
 .el-card.is-always-shadow{
     box-shadow: none;
 }
 .el-card{
-    margin-top: 10px;
+    margin: 10px 0;
     width: 90%;
     color: #004445;
 }

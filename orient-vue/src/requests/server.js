@@ -107,6 +107,13 @@ const feedBack = data => {
     })
 };
 
+const getFeedBacks=()=>{
+    return $axios({
+        url:'/feedBacks',
+        methods:'get',
+    })
+}
+
 // const getNewStockInfo = data =>{
 //     return $axios({
 //         url:"/newStockInfo",
@@ -137,5 +144,6 @@ export default {
     deleteUser,
     signUp,
     getStockQuarter,
-    feedBack
+    feedBack,
+    getFeedBacks
 }

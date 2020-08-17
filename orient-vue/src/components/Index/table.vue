@@ -111,7 +111,7 @@ export default {
     },
     setPageSize(){
       let width=window.innerWidth
-      if(width<=1280){
+      if(width<=1600){
         this.pageSize=5
       }else{
         this.pageSize=6
@@ -123,7 +123,7 @@ export default {
 <style scoped>
 .el-table {
   flex: 1 1 60%;
-  font-size: 14px;
+  font-size: 13px;
   border-radius: 5px;
   border-left: none;
   border-right: none;

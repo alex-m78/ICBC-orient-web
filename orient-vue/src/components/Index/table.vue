@@ -2,23 +2,24 @@
    <div>
     <el-table :data="targetCompared.slice((currentPage-1)*pageSize,currentPage*pageSize)"
               :span-method="targetComparedSpanMethod">
-      <el-table-column width="90" prop="target" label="指标" align="center"></el-table-column>
-      <el-table-column prop="feature" width="170" label="子指标" align="center"></el-table-column>
+      <el-table-column prop="target" label="指标" align="center"></el-table-column>
+      <el-table-column prop="feature"  label="子指标" align="center"></el-table-column>
       <el-table-column label="新进重仓股" prop="heavyStock" align="center">
-        <el-table-column prop="mean1" label="均值" align="center"></el-table-column>
-        <el-table-column prop="std1" label="标准差" align="center"></el-table-column>
-        <el-table-column prop="len1" label="有效样本" align="center"></el-table-column>
+        <el-table-column prop="mean1" width="120" label="均值" align="center"></el-table-column>
+        <el-table-column prop="std1" width="120" label="标准差" align="center"></el-table-column>
+        <el-table-column prop="len1" width="120" label="有效样本" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="非新进重仓股" prop="nonHeavyStock" align="center">
-        <el-table-column prop="mean2" label="均值" align="center"></el-table-column>
-        <el-table-column prop="std2" label="标准差" align="center"></el-table-column>
+        <el-table-column prop="mean2" width="120" label="均值" align="center"></el-table-column>
+        <el-table-column prop="std2" width="120" label="标准差" align="center"></el-table-column>
         <el-table-column
           prop="len2"
           label="有效样本"
           align="center"
+          width="120"
         ></el-table-column>
       </el-table-column>
-      <el-table-column width="60" prop="corr" label="相关性" align="center"></el-table-column>
+      <el-table-column width="70" prop="corr" label="相关性" align="center"></el-table-column>
     </el-table>
      <div class="pagination-name" style="margin-top:5px;">
        <el-pagination align='center'
@@ -112,10 +113,8 @@ export default {
       let width=window.innerWidth
       if(width<=1280){
         this.pageSize=5
-      }else if(width<=1600){
-        this.pageSize=6
       }else{
-        this.pageSize=8
+        this.pageSize=6
       }
     }
   },
@@ -124,7 +123,7 @@ export default {
 <style scoped>
 .el-table {
   flex: 1 1 60%;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 5px;
   border-left: none;
   border-right: none;

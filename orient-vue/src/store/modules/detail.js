@@ -26,7 +26,7 @@ const moduleDetail={
             state.industryDataPre=param.industryDataPre;
             state.accuracy=(param.accuracy*100).toFixed(2);
             state.precisionTop30=(param.precisionTop30*100).toFixed(2);
-            console.log(state)
+            // console.log(state)
         }
 
     },
@@ -41,7 +41,9 @@ const moduleDetail={
         //     }
         // },
         async pre_result(context,param){
+            console.log(param)
             let res= await getPreResult(param);
+            console.log(res)
             let data = res.data.result;
             if (data !== undefined) {
                 context.commit('PreResult',data)

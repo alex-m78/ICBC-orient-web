@@ -71,7 +71,7 @@ export default {
       }else if(width<=1600){
         this.pageSize=10
       }else{
-        this.pageSize=12
+        this.pageSize=11
       }
     }
   },

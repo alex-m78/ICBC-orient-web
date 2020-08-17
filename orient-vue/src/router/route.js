@@ -51,7 +51,15 @@ export const dynamicRouter=[
                 icon:'el-icon-s-help'
             },
             {
-                id:'3',
+                id: '3',
+                path: '/search',
+                name: 'search',
+                component: Search,
+                title: '原始数据',
+                icon: 'el-icon-s-data',
+            },
+            {
+                id:'4',
                 path: '/manage',
                 name: 'manage',
                 component: Manage,
@@ -61,14 +69,7 @@ export const dynamicRouter=[
                     role:'admin'
                 }
             },
-            {
-                id: '4',
-                path: '/search',
-                name: 'search',
-                component: Search,
-                title: '原始数据',
-                icon: 'el-icon-s-data',
-            }
+            
         ]
     }
 ]

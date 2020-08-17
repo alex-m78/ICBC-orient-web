@@ -1,5 +1,5 @@
 #userTable{
-    height: calc(100% -10px);
+    height: calc(100% -20px);
     flex: 1 1 60%;
 }
 
@@ -9,7 +9,7 @@
     height: 100%;
 }
 #opinions{
-    width: 500px;
+    width: 400px;
 }
 #cards{
     display: flex;

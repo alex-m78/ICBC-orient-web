@@ -68,10 +68,10 @@
         </el-row>
         <el-divider></el-divider>
         <div id="cards">
-          <el-card class="box-card" v-for="feedBack in feedBacks" :key="feedBack.index">
+          <el-card class="box-card" v-for="feedBack in feedBacks" :key="feedBack.idnewTable">
             <div slot="header" class="clearfix">
               <span>{{feedBack.name}}</span>
-              <el-button style="float: right;" type="text">删除</el-button>
+              <el-button style="float: right;" type="text" @click="deleteFeedBack(feedBack.idnewTable)">删除</el-button>
             </div>
             <div class="text item">{{feedBack.feedBack}}</div>
           </el-card>
@@ -148,6 +148,12 @@ export default {
       this.$api.getFeedBacks().then(res=>{
         this.feedBacks=res.data;
         console.log(this.feedBacks)
+      })
+    },
+    deleteFeedBack:function(id){
+      console.log(id)
+      this.$api.deleteFeedBacks({id:id}).then(res=>{
+        console.log(res)
       })
     }
   },

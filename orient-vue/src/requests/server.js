@@ -113,7 +113,14 @@ const getFeedBacks=()=>{
         methods:'get',
     })
 }
+const deleteFeedBacks=(data)=>{
+    return $axios({
+        url:'/feedBack',
+        methods:'delete',
+        params:data
 
+    })
+}
 // const getNewStockInfo = data =>{
 //     return $axios({
 //         url:"/newStockInfo",
@@ -145,5 +152,6 @@ export default {
     signUp,
     getStockQuarter,
     feedBack,
-    getFeedBacks
+    getFeedBacks,
+    deleteFeedBacks
 }

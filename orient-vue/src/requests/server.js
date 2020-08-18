@@ -106,6 +106,14 @@ const feedBack = data => {
         params: data
     })
 };
+export const getRowData = data =>{
+    return $axios({
+        url: '/metaData',
+        methods: "get",
+        params: data
+        }
+    )
+}
 
 // const getNewStockInfo = data =>{
 //     return $axios({
@@ -137,5 +145,6 @@ export default {
     deleteUser,
     signUp,
     getStockQuarter,
-    feedBack
+    feedBack,
+    getRowData
 }

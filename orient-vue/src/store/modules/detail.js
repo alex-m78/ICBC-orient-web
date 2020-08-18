@@ -26,20 +26,10 @@ const moduleDetail={
             state.industryDataPre=param.industryDataPre;
             state.accuracy=(param.accuracy*100).toFixed(2);
             state.precisionTop30=(param.precisionTop30*100).toFixed(2);
-            // console.log(state)
         }
 
     },
     actions:{
-        //  async real_result(context,param){
-        //
-        //     var res= await getRealResult(param);
-        //     let data=res.data.result;
-        //     console.log(data)
-        //     if(data!==undefined){
-        //         context.commit('RealResult',data)
-        //     }
-        // },
         async pre_result(context,param){
             console.log(param)
             let res= await getPreResult(param);

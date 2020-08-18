@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import moduleNav from './modules/nav'
 import modulesIndex from './modules/index'
 import moduleDetail from './modules/detail'
+import moduleRowData from "./modules/search";
 
 
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
         moduleNav,
         modulesIndex,
         moduleDetail,
+        moduleRowData,
     }
 })
 

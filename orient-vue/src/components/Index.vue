@@ -65,12 +65,12 @@
                   </div>
                 </el-col>
                 <el-col :span="21">
-                  <div class="grid-content bg-purple">预测新进重仓股所属行业</div>
+                  <div class="grid-content bg-purple">新进重仓股所属行业</div>
                 </el-col>
               </el-row>
             </div>
             <div id="chart2" class="chart"></div>
-            <p>2020年第二季度预测数据</p>
+            <p>2020年第二季度实际数据</p>
           </div>
         </div>
         <div id="tableview" class="panel">

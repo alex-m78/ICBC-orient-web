@@ -71,7 +71,11 @@
           <el-card class="box-card" v-for="feedBack in feedBacks" :key="feedBack.idnewTable">
             <div slot="header" class="clearfix">
               <span>{{feedBack.name}}</span>
-              <el-button style="float: right;" type="text" @click="deleteFeedBack(feedBack.idnewTable)">删除</el-button>
+              <el-button
+                style="float: right;"
+                type="text"
+                @click="deleteFeedBack(feedBack.idnewTable)"
+              >删除</el-button>
             </div>
             <div class="text item">{{feedBack.feedBack}}</div>
           </el-card>
@@ -99,7 +103,7 @@ export default {
         { value: "admin", label: "admin" },
       ],
       roleTemp: "user",
-      feedBacks:[]
+      feedBacks: [],
     };
   },
   mounted() {
@@ -144,28 +148,37 @@ export default {
         this.tableData = data;
       });
     },
-    showFeedBacks:function(){
-      this.$api.getFeedBacks().then(res=>{
-        this.feedBacks=res.data;
-        console.log(this.feedBacks)
-      })
+    showFeedBacks: function () {
+      this.$api.getFeedBacks().then((res) => {
+        this.feedBacks = res.data;
+        console.log(this.feedBacks);
+      });
     },
-    deleteFeedBack:function(id){
-      console.log(id)
-      this.$api.deleteFeedBacks({id:id}).then(res=>{
-        console.log(res)
-      })
-    }
+    deleteFeedBack: function (id) {
+      console.log(id);
+      this.$api.deleteFeedBacks({ id: id }).then((res) => {
+        console.log(res);
+        let status = res.status;
+        console.log(status===200)
+        if (status === 200) {
+          this.$message({
+            type: "success",
+            message: "删除成功",
+          });
+          this.showFeedBacks()
+        }
+      });
+    },
   },
 };
 </script>
 <style scoped>
 @import "../assets/style/manage.css";
-.el-button--text{
+.el-button--text {
   color: #2c7873;
 }
-.el-button--text:hover{
-  color: #409EFF
+.el-button--text:hover {
+  color: #409eff;
 }
 @media (min-width: 800px) {
   .el-col-1 {

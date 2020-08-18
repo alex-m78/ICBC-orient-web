@@ -14,11 +14,10 @@ const  moduleRowData={
     },
     actions:{
         async row_data(context,param){
-            console.log(param)
+            // console.log(param)
             let res= await getRowData(param);
-            console.log(res)
+            // console.log(res)
             let data = res.data.result;
-            console.log(data)
             if (data !== undefined) {
                 context.commit('RowData',data)
             }

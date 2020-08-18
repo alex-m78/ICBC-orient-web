@@ -21,7 +21,7 @@
 }
 #detail_top{
     /* padding: 0 20px; */
-    height: 150px;
+    height: 70px;
     margin-bottom: 10px;
 }
 #industriesChart{
@@ -117,7 +117,7 @@
   } */
 
 #detail_main{
-    height: calc(100% - 170px);
+    height: calc(100% - 80px);
     display: flex;
     flex-direction: row;
     width: 100%;

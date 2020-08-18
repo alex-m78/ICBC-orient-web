@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table
-        :data="stockData"
+        :data="metaData"
         border
         style="width: 100%">
       <el-table-column fixed  prop="tsCode"  label="股票代码"></el-table-column>
@@ -81,17 +81,16 @@
 export default {
   name: "stockDate",
   data() {
-
-    return this.$store.state.moduleRowData.stockRowData
-  },
-  computed: {
-    stockData() {
-      return this.$store.state.moduleRowData.stockRowData
-    },
-  },
-  methods: {
-
+    return{
+      metaData:this.$store.state.moduleRowData.stockRowData,
     }
+  },
+  // computed: {
+  //   stockData() {
+  //     return this.$store.state.moduleRowData.stockRowData
+  //   },
+  // },
+
 }
 </script>
 

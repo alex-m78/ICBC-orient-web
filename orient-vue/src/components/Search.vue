@@ -45,7 +45,7 @@
       </el-row>
     </div>
     <div id="stockData">
-      <stockData ref="stockDate"></stockData>
+      <stockData ref="stockData"></stockData>
     </div>
   </div>
     </div>
@@ -55,7 +55,7 @@
 
 <script>
 import bus from "../utils/bus";
-import stockData from "../components/Search/datachart.vue"
+import stockData from "../components/Search/datachart"
 
 export default {
 name: "Search",

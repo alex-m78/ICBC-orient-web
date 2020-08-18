@@ -7,16 +7,16 @@ const  moduleRowData={
     },
     mutations:{
         RowData:(state,param)=>{
-            state.stockRowData=param;
+            console.log(param)
+            state.stockRowData.push(param)
         }
 
     },
     actions:{
         async row_data(context,param){
-            console.log("enter")
-            console.log(param)
+            // console.log(param)
             let res= await getRowData(param);
-            console.log(res)
+            // console.log(res)
             let data = res.data.result;
             if (data !== undefined) {
                 context.commit('RowData',data)

@@ -3,7 +3,7 @@
     <div id="detail_top" class="panel">
       <el-row>
         <el-col :span="1.5">预测年份：</el-col>
-        <el-col :span="15">
+        <el-col style="width:350px">
           <el-radio-group v-model="year" @change="changeYear">
             <el-radio-button label="2020年"></el-radio-button>
             <el-radio-button label="2019年"></el-radio-button>
@@ -11,11 +11,8 @@
             <el-radio-button label="2017年"></el-radio-button>
           </el-radio-group>
         </el-col>
-      </el-row>
-      <el-divider></el-divider>
-      <el-row>
         <el-col :span="1.5">预测季度：</el-col>
-        <el-col :span="15">
+        <el-col style="width:400px">
           <el-radio-group v-model="quarter" @change="changeQuarter">
             <el-radio-button label="第一季度"></el-radio-button>
             <el-radio-button label="第二季度"></el-radio-button>

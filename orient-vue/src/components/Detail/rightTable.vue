@@ -39,15 +39,14 @@ export default {
       pageSize: 10, // 每页的数据条数
     };
   },
-  
 
-  computed:{
-    stockData(){
-      return this.$store.state.moduleDetail.stockDataDetail
+  computed: {
+    stockData() {
+      return this.$store.state.moduleDetail.stockDataDetail;
     },
   },
-  mounted(){
-    this.setPageSize()
+  mounted() {
+    this.setPageSize();
   },
   methods: {
     // changeTableData: function (stockData) {
@@ -64,14 +63,16 @@ export default {
       // console.log(`当前页: ${val}`);
       this.currentPage = val;
     },
-    setPageSize(){
-      let width=window.innerWidth;
-      if(width<=1600){
-        this.pageSize=7
-      }else{
-        this.pageSize=11
+    setPageSize() {
+      let width = window.innerWidth;
+      if (width <= 1280) {
+        this.pageSize = 9;
+      } else if (width <= 1600) {
+        this.pageSize = 11;
+      } else {
+        this.pageSize = 13;
       }
-    }
+    },
   },
 };
 </script>

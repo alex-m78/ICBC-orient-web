@@ -24,13 +24,13 @@
     
     }
     .left{
-        width: 300px;
+        width: 350px;
         display: flex;
         flex-direction: column;
     }
     
     .right{
-        width: calc(100% - 300px);
+        width: calc(100% - 350px);
         display: flex;
         flex-direction: column;
     }
@@ -64,12 +64,12 @@
         flex-direction: row;
     }
     .left{
-        width: 350px;
+        width: 400px;
         display: flex;
         flex-direction: column;
     }
     .right{
-        width: calc(100% - 350px);
+        width: calc(100% - 400px);
         display: flex;
         flex-direction: column;
     }
@@ -134,13 +134,13 @@
         /* border: 1px solid gray; */
     }
     .left{
-        width: 550px;
+        width: 500px;
         display: flex;
         flex-direction: column;
     }
     
     .right{
-        width: calc(100% - 550px);
+        width: calc(100% - 500px);
         display: flex;
         flex-direction: column;
     }

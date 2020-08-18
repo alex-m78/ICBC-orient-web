@@ -47,12 +47,14 @@ export default {
     font-weight: 600;
     letter-spacing: 2px;
     color: #6886c5;
+    z-index: 999;
   }
 }
 @media(min-width:1280px){
   .cell{
     margin: 10px;
     position: relative;
+    
   }
   .stock_name{
     position: absolute;
@@ -62,6 +64,7 @@ export default {
     font-weight: 600;
     letter-spacing: 2px;
     color: #6886c5;
+    z-index: 999;
   }
 }
 @media(min-width:1600px){
@@ -73,6 +76,8 @@ export default {
     font-weight: 600;
     letter-spacing: 2px;
     color: #6886c5;
+    z-index: 999;
+    background: white;
   }
 }
 /* .chart {

@@ -12,23 +12,24 @@ export default {
     cellchart() {
       return "cellchart" + Math.random() * 100000;
     },
-    weekStock(){
+    weekStock() {
       // console.log(this.$attrs)
-      return this.$attrs.weekStock
-    }
+      return this.$attrs.weekStock;
+    },
   },
   mounted() {
     this.creatChart();
   },
   methods: {
     creatChart: function () {
-      let date=[],value=[]
-      for(let v of this.weekStock){
-        date.push(v.tradeDate)
-        value.push(v.close)
+      let date = [],
+        value = [];
+      for (let v of this.weekStock) {
+        date.push(v.tradeDate);
+        value.push(v.close);
       }
-      date=date.reverse();
-      value=value.reverse();
+      date = date.reverse();
+      value = value.reverse();
       var cellChart = echarts.init(document.getElementById(this.cellchart));
       var celloption = {
         color: ["#5B86E5"],
@@ -46,16 +47,16 @@ export default {
           },
           extraCssText: "box-shadow: 0 0 3px rgba(150, 150, 150, 0.5);",
           trigger: "axis",
-            axisPointer: {
-              type: "cross",
-              label: {
-                backgroundColor: "#283b56",
-              },
+          axisPointer: {
+            type: "cross",
+            label: {
+              backgroundColor: "#283b56",
             },
+          },
         },
         grid: {
           x: 0,
-          y: 40,
+          y: 50,
           x2: 0,
           y2: 0,
         },
@@ -63,16 +64,16 @@ export default {
           show: false,
           type: "category",
           boundaryGap: false,
-          data:date,
+          data: date,
         },
         yAxis: {
           show: false,
           type: "value",
-          min: 'dataMin'
+          min: "dataMin",
         },
         series: [
           {
-            data:value,
+            data: value,
             type: "line",
             lineStyle: {
               color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
@@ -92,8 +93,16 @@ export default {
               width: 3,
             },
             smooth: true,
-            symbolSize:1,
+            symbolSize: 1,
             showSymbol: true,
+            // markPoint: {
+            //   data: [
+            //     {
+            //       type: "max",
+            //     },
+            //   ],
+            //   symbol: "pin"
+            // },
             areaStyle: {
               normal: {
                 color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [

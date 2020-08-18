@@ -68,17 +68,12 @@
         </el-row>
         <el-divider></el-divider>
         <div id="cards">
-          <el-card class="box-card">
+          <el-card class="box-card" v-for="feedBack in feedBacks" :key="feedBack.idnewTable">
             <div slot="header" class="clearfix">
-              <span>user</span>
+              <span>{{feedBack.name}}</span>
+              <el-button style="float: right;" type="text" @click="deleteFeedBack(feedBack.idnewTable)">删除</el-button>
             </div>
-            <div class="text item">12344</div>
-          </el-card>
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>popo</span>
-            </div>
-            <div class="text item">5678fsfsdefsdfeeafeawefafawfawfwsfdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss8</div>
+            <div class="text item">{{feedBack.feedBack}}</div>
           </el-card>
         </div>
       </div>
@@ -104,11 +99,13 @@ export default {
         { value: "admin", label: "admin" },
       ],
       roleTemp: "user",
+      feedBacks:[]
     };
   },
   mounted() {
     this.getTableData();
     this.changeHeaderStatus();
+    this.showFeedBacks();
   },
   methods: {
     handleEdit(index) {
@@ -147,11 +144,29 @@ export default {
         this.tableData = data;
       });
     },
+    showFeedBacks:function(){
+      this.$api.getFeedBacks().then(res=>{
+        this.feedBacks=res.data;
+        console.log(this.feedBacks)
+      })
+    },
+    deleteFeedBack:function(id){
+      console.log(id)
+      this.$api.deleteFeedBacks({id:id}).then(res=>{
+        console.log(res)
+      })
+    }
   },
 };
 </script>
 <style scoped>
 @import "../assets/style/manage.css";
+.el-button--text{
+  color: #2c7873;
+}
+.el-button--text:hover{
+  color: #409EFF
+}
 @media (min-width: 800px) {
   .el-col-1 {
     width: 25px;

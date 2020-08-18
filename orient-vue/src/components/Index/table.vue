@@ -5,18 +5,18 @@
       <el-table-column prop="target" label="指标" align="center"></el-table-column>
       <el-table-column prop="feature"  label="子指标" align="center"></el-table-column>
       <el-table-column label="新进重仓股" prop="heavyStock" align="center">
-        <el-table-column prop="mean1" width="120" label="均值" align="center"></el-table-column>
-        <el-table-column prop="std1" width="120" label="标准差" align="center"></el-table-column>
+        <el-table-column prop="mean1" width="100" label="均值" align="center"></el-table-column>
+        <el-table-column prop="std1" width="100" label="标准差" align="center"></el-table-column>
         <el-table-column prop="len1" width="120" label="有效样本" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="非新进重仓股" prop="nonHeavyStock" align="center">
-        <el-table-column prop="mean2" width="120" label="均值" align="center"></el-table-column>
-        <el-table-column prop="std2" width="120" label="标准差" align="center"></el-table-column>
+        <el-table-column prop="mean2" width="100" label="均值" align="center"></el-table-column>
+        <el-table-column prop="std2" width="100" label="标准差" align="center"></el-table-column>
         <el-table-column
           prop="len2"
           label="有效样本"
           align="center"
-          width="120"
+          width="100"
         ></el-table-column>
       </el-table-column>
       <el-table-column width="70" prop="corr" label="相关性" align="center"></el-table-column>
@@ -111,7 +111,7 @@ export default {
     },
     setPageSize(){
       let width=window.innerWidth
-      if(width<=1280){
+      if(width<=1600){
         this.pageSize=5
       }else{
         this.pageSize=6
@@ -123,7 +123,7 @@ export default {
 <style scoped>
 .el-table {
   flex: 1 1 60%;
-  font-size: 14px;
+  font-size: 13px;
   border-radius: 5px;
   border-left: none;
   border-right: none;

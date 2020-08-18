@@ -115,6 +115,20 @@ export const getRowData = data =>{
     )
 }
 
+const getFeedBacks=()=>{
+    return $axios({
+        url:'/feedBacks',
+        methods:'get',
+    })
+}
+const deleteFeedBacks=(data)=>{
+    return $axios({
+        url:'/feedBack',
+        methods:'delete',
+        params:data
+
+    })
+}
 // const getNewStockInfo = data =>{
 //     return $axios({
 //         url:"/newStockInfo",
@@ -145,6 +159,8 @@ export default {
     deleteUser,
     signUp,
     getStockQuarter,
+    getFeedBacks,
+    deleteFeedBacks,
     feedBack,
     getRowData
 }

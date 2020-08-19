@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="panel" id = "tab1">
+    <div class="panel" id = "tab1" style="text-align: center;">
     <el-table
         :data="stockData"
+        style="margin: auto"
         border >
       <el-table-column fixed  prop="tsCode"  label="股票代码" width="150"></el-table-column>
       <el-table-column  prop="name"  label="股票名称" > </el-table-column>
@@ -29,14 +30,14 @@
       <el-table-column  prop="qprofitToGr"  label="净利润/营业总收入(单季度)"> </el-table-column>
       <el-table-column  prop="opOfGr"  label="营业利润/营业总收入"> </el-table-column>
       <el-table-column  fixed="right" prop="qopToGr"  label="营业利润/营业总收入(单季度)"> </el-table-column>
-
     </el-table>
     </div>
     <el-divider><i class="el-icon-s-flag"></i></el-divider>
-    <div class="panel" id = "tab2">
+    <div class="panel" id = "tab2" style="text-align: center;">
     <el-table
         :data="stockData"
-        border >
+        border
+        style="margin: auto">
       <el-table-column fixed  prop="tsCode"  label="股票代码" width="150"></el-table-column>
       <el-table-column  prop="roe"  label="净资产收益率"> </el-table-column>
       <el-table-column  prop="qroe"  label="净资产收益率(单季度)"> </el-table-column>
@@ -62,10 +63,11 @@
     </el-table>
     </div>
     <el-divider><i class="el-icon-s-flag"></i></el-divider>
-    <div class="panel" id = "tab3">
+    <div class="panel" id = "tab3" style="text-align: center;">
       <el-table
           :data="stockData"
           :cell-class-name="cellClassName"
+          style="margin: auto"
           border >
         <el-table-column fixed  prop="tsCode"  label="股票代码" width="150"></el-table-column>
         <el-table-column  prop="high"  label="季最高价"> </el-table-column>
@@ -125,7 +127,7 @@ export default {
 }
 @media(max-width:1280px){
   .el-table{
-    width: 1100px;
+    width: 1000px;
     height: 200px;
   }
   /*#tab1 {*/
@@ -141,7 +143,7 @@ export default {
     height: 250px;
   }
 }
-@media(min-width:1600px){
+@media(min-width:1620px){
   .el-table{
     width: 1400px;
     height: 300px;
@@ -149,9 +151,16 @@ export default {
 }
 @media(min-width:1920px){
   .el-table{
-    width: 1600px;
+    width: 1700px;
     height: 350px;
   }
 }
+@media(min-width:2500px){
+  .el-table{
+    width: 2050px;
+    height: 290px;
+  }
+}
+
 
 </style>

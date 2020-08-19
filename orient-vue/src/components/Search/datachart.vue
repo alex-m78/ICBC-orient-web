@@ -66,7 +66,7 @@
     <div class="panel" id = "tab3" style="text-align: center;">
       <el-table
           :data="stockData"
-          :cell-class-name="cellClassName"
+          :cell-style="cellStyle"
           style="margin: auto"
           border >
         <el-table-column fixed  prop="tsCode"  label="股票代码" width="150"></el-table-column>
@@ -111,20 +111,25 @@ export default {
     },
   },
   methods: {
-    cellClassName({rowIndex,columnIndex}) {
-      if (rowIndex ===1 && columnIndex === 22) {
-        return 'warning-cell';
+    cellStyle({ row, column, rowIndex, columnIndex }) {
+      if (rowIndex === 0 && column.status === "是否为基金重仓股") {
+        return 'color: #0CB618';
       }
-      return "";
+      if (row.status === "1" && columnIndex === 70) {
+        return 'color: #0CB618';
+      }
+      else{
+        return 'color: #1a1a1b'
+      }
     }
     }
 }
 </script>
 
 <style scoped>
-.el-table.warning-cell{
-  background: #6886c5;
-}
+/*.el-table.warning-cell{*/
+/*  background: #6886c5;*/
+/*}*/
 @media(max-width:1280px){
   .el-table{
     width: 1000px;
@@ -139,8 +144,8 @@ export default {
 }
 @media(min-width:1280px){
   .el-table{
-    width: 1200px;
-    height: 250px;
+    width: 1100px;
+    height: 210px;
   }
 }
 @media(min-width:1620px){

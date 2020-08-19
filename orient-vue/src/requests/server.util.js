@@ -1,7 +1,10 @@
 import axios from "axios";
 import {Message} from "element-ui";
 
+
+
 const $axios = (options) => {
+    console.log(options)
     return new Promise((resolve, reject) => {
         // 默认配置 axios 实例
         const instance = axios.create({
@@ -11,19 +14,21 @@ const $axios = (options) => {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'
             },
+            method:options.methods,
             transformRequest: [
                 //在请求之前对data传参进行格式转换
                 data => JSON.stringify(data)],
             // 请求时间
             timeout: 3000
         });
+        // 请求拦截
         instance.interceptors.request.use(config => {
             if (sessionStorage.getItem("token")){
                 config.headers['Authentication'] =JSON.parse(sessionStorage.getItem("token")) 
             }
             return config
         })
-        // 响应配置
+        // 响应拦截
         instance.interceptors.response.use(response => {
             return response;
         }, error => {

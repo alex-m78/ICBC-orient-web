@@ -6,8 +6,8 @@ const $axios = (options) => {
         // 默认配置 axios 实例
         const instance = axios.create({
             // 默认请求 ip
-            baseURL: 'http://47.103.137.116:80/api',
-            // baseURL: 'http://localhost:8000/api',
+            // baseURL: 'http://47.103.137.116:80/api',
+            baseURL: 'http://localhost:8000/api',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'
             },
@@ -15,7 +15,7 @@ const $axios = (options) => {
                 //在请求之前对data传参进行格式转换
                 data => JSON.stringify(data)],
             // 请求时间
-            timeout: process.env.VUE_APP_Timeout
+            timeout: 3000
         });
         instance.interceptors.request.use(config => {
             if (sessionStorage.getItem("token")){

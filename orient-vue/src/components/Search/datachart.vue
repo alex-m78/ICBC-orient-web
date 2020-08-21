@@ -24,6 +24,8 @@
       <el-table-column align="center" prop="arTurn"  label="应收账款周转率"> </el-table-column>
       <el-table-column align="center" prop="caTurn"  label="流动资产周转率"> </el-table-column>
       <el-table-column align="center" prop="assetsTurn"  label="总资产周转率"> </el-table-column>
+      <el-table-column align="center" prop="debtToAssets"  label="资产负债率"> </el-table-column>
+      
       
     </el-table>
     </div>
@@ -34,16 +36,8 @@
         style="margin: auto"
         border >
       <el-table-column fixed align="center" prop="tsCode"  label="股票代码" width="120"></el-table-column>
-      <el-table-column align="center" prop="bps"  label="每股净资产"> </el-table-column>
-      <el-table-column align="center" prop="cfps"  label="每股现金流"> </el-table-column>
-      <el-table-column align="center" prop="profitToGr"  label="净利润/营业总收入"> </el-table-column>
-      <el-table-column align="center" prop="qprofitToGr"  label="净利润/营业总收入(单季度)"> </el-table-column>
-      <el-table-column align="center" prop="opOfGr"  label="营业利润/营业总收入"> </el-table-column>
-      <el-table-column align="center" prop="qopToGr"  label="营业利润/营业总收入(单季度)"> </el-table-column>
-      <el-table-column align="center" prop="roe"  label="净资产收益率"> </el-table-column>
-      <el-table-column align="center" prop="qroe"  label="净资产收益率(单季度)"> </el-table-column>
-       <el-table-column align="center" prop="roeWaa"   label="邮加权平均净资产收益率编"> </el-table-column>
-      <el-table-column align="center" prop="debtToAssets"  label="资产负债率"> </el-table-column>
+      
+      
       <el-table-column align="center" prop="roaDp"  label="总资产净利率(杜邦分析)"> </el-table-column>
       <el-table-column align="center" prop="undistProfitPs"  label="每股未分配利润"> </el-table-column>
       <el-table-column align="center" prop="taxToEbt"  label="所得税/利润总额"> </el-table-column>
@@ -52,17 +46,6 @@
       <el-table-column align="center" prop="incomeTax"  label="所得税"> </el-table-column>
       <el-table-column align="center" prop="accountsReceiv"  label="应收账款"> </el-table-column>
       <el-table-column align="center" prop="fixAssets"  label="固定资产"> </el-table-column>
-      
-    </el-table>
-    </div>
-    <el-divider><i class="el-icon-s-flag"></i></el-divider>
-    <div  style="margin:10px">
-    <el-table
-        :data="stockData"
-        border
-        style="margin: auto">
-      <el-table-column fixed align="center" prop="tsCode"  label="股票代码" width="120"></el-table-column>
-      
       <el-table-column align="center" prop="totalCurLiab"  label="流动负债"> </el-table-column>
       <el-table-column align="center" prop="ocfToOpincome"  label="净现比"> </el-table-column>
       <el-table-column align="center" prop="basicEpsYoy"  label="每股收益同比增长率"> </el-table-column>
@@ -75,9 +58,7 @@
        <el-table-column align="center" prop="high"  label="季最高价"> </el-table-column>
         <el-table-column align="center" prop="low"  label="季最低价"> </el-table-column>
         <el-table-column align="center" prop="vol"  label="季成交量"> </el-table-column>
-        <el-table-column align="center" prop="pctChg0"  label="月涨跌幅(复权)0"> </el-table-column>
-        <el-table-column align="center" prop="pctChg1"  label="月涨跌幅(复权)1"> </el-table-column>
-        <el-table-column align="center" prop="pctChg2"  label="月涨跌幅(复权)2"> </el-table-column>
+      
     </el-table>
     </div>
     <el-divider><i class="el-icon-s-flag"></i></el-divider>
@@ -87,7 +68,10 @@
         border
         style="margin: auto">
       <el-table-column fixed align="center" prop="tsCode"  label="股票代码" width="120"></el-table-column>
-        
+      
+        <el-table-column align="center" prop="pctChg0"  label="月涨跌幅(复权)0"> </el-table-column>
+        <el-table-column align="center" prop="pctChg1"  label="月涨跌幅(复权)1"> </el-table-column>
+        <el-table-column align="center" prop="pctChg2"  label="月涨跌幅(复权)2"> </el-table-column>
         <el-table-column align="center" prop="turnoverRateMean"  label="换手率"> </el-table-column>
         <el-table-column align="center" prop="peTtmAmin"  label="最小市盈率TTM"> </el-table-column>
         <el-table-column align="center" prop="peTtmAmax"  label="平均市盈率TTM"> </el-table-column>

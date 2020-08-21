@@ -70,7 +70,8 @@
         <div id="cards">
           <el-card class="box-card" v-for="feedBack in feedBacks" :key="feedBack.idnewTable">
             <div slot="header" class="clearfix">
-              <span>{{feedBack.name}}</span>
+              <img src="../assets/images/hsj.jpg" height="20">
+              <span >{{feedBack.name}}</span>
               <el-button
                 style="float: right;"
                 type="text"

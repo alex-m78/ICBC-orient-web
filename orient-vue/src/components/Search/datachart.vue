@@ -120,14 +120,10 @@ export default {
         return ''
       }
     },
-    tableHeaderCellStyle: function ({row, rowIndex}) {
-        let i;
-        for (i = 0; i<23; i++){
-          console.log(rowIndex)
-          if (row[i]["property"] === "label"){
-            return 'warning-cell '
+    tableHeaderCellStyle: function ({columnIndex}) {
+          if (columnIndex === 22){
+            return 'background: #ffdbc5';
           }
-        }
       }
     }
 }
@@ -135,12 +131,9 @@ export default {
 
 <style scoped>
 .el-table.warning-cell{
-  background: #6886c5;
+  background:#ffdbc5;
 }
-el-table:last-child
-{
-  background:#ff0000;
-}
+
 @media(max-width:1280px){
   .el-table{
     width: 1000px;

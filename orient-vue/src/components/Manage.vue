@@ -70,7 +70,13 @@
         <div id="cards">
           <el-card class="box-card" v-for="feedBack in feedBacks" :key="feedBack.idnewTable">
             <div slot="header" class="clearfix">
-              <span>{{feedBack.name}}</span>
+              <div id="userFeedBack">
+                <el-avatar
+                  src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                ></el-avatar>
+                <span>{{feedBack.name}}</span>
+              </div>
+
               <el-button
                 style="float: right;"
                 type="text"
@@ -159,13 +165,13 @@ export default {
       this.$api.deleteFeedBacks({ id: id }).then((res) => {
         console.log(res);
         let status = res.status;
-        console.log(status===200)
+        console.log(status === 200);
         if (status === 200) {
           this.$message({
             type: "success",
             message: "删除成功",
           });
-          this.showFeedBacks()
+          this.showFeedBacks();
         }
       });
     },
@@ -173,6 +179,17 @@ export default {
 };
 </script>
 <style scoped>
+.el-avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+#userFeedBack{
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
 @import "../assets/style/manage.css";
 .el-button--text {
   color: #2c7873;

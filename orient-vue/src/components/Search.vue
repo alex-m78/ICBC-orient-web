@@ -30,8 +30,7 @@
           </el-col>
         </el-row>
       </div>
-    <div id="search_main">
-      <div id="stockTable" class="panel">
+    <div id="search_main" class="panel">
     <div class="title">
       <el-row :gutter="5">
         <el-col :span="2">
@@ -47,7 +46,6 @@
     <div id="stockData">
       <stockData ref="stockData"></stockData>
     </div>
-  </div>
     </div>
   </div>
 

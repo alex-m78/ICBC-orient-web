@@ -12,12 +12,6 @@ const moduleDetail={
         precisionTop30:0,
     },
     mutations:{
-        // RealResult:(state,param)=>{
-        //     // state.industryDataPre=param.industryDataPre;
-        //
-        //
-        //     // state.predictStock=param.predictStock
-        // },
         PreResult:(state,param)=>{
             state.stockDataDetail=param.stockDataDetail;
             state.realStock=param.realStock;

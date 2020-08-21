@@ -123,17 +123,23 @@ export default {
     },
   },
   methods: {
-    cellStyle({ row, column, rowIndex, columnIndex }) {
-      if (rowIndex === 0 && column.status === "是否为基金重仓股") {
-        return 'color: #0CB618';
-      }
-      if (row.status === "1" && columnIndex === 70) {
-        return 'color: #0CB618';
+    cellStyle({rowIndex, columnIndex }) {
+      if (rowIndex === 0 && columnIndex === 22) {
+        return 'background: #ffdbc5';
       }
       else{
-        return 'color: #1a1a1b'
+        return ''
       }
-    }
+    },
+    tableHeaderCellStyle: function ({row, rowIndex}) {
+        let i;
+        for (i = 0; i<23; i++){
+          console.log(rowIndex)
+          if (row[i]["property"] === "label"){
+            return 'warning-cell '
+          }
+        }
+      }
     }
 }
 </script>

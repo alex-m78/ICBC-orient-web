@@ -75,14 +75,22 @@ export default {
             });
             // console.log(value)
             this.feedback = value
+            let param = {
+              msg: this.feedback,
+              name: this.username,
+            };
+            this.$api.feedBack(param)
+                .then((res) =>{
+                  console.log(res)
+                })
           }).catch(() => {
             this.$message({
               type: 'info',
               message: '取消输入'
             });
           });
-         
       }
+
     }
   }
 };

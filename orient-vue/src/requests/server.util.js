@@ -19,7 +19,7 @@ const $axios = (options) => {
                 //在请求之前对data传参进行格式转换
                 data => JSON.stringify(data)],
             // 请求时间
-            timeout: process.env.VUE_APP_Timeout
+            timeout: 3000
         });
         // 请求拦截
         instance.interceptors.request.use(config => {

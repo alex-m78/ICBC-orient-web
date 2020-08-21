@@ -36,7 +36,7 @@
 #search_main{
     height: calc(100% - 170px);
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
+    width: calc(100% - 20px);
     /* background-color: #fff; */
 }

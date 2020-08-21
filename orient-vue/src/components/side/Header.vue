@@ -1,11 +1,6 @@
 <template>
   <div id="headbar">
     <el-row style="display:flex;justify-content:flex-end">
-<!--      <el-col :span="10">-->
-<!--        <el-input placeholder="请输入内容" v-model="input" class="input-with-select" >-->
-<!--          <el-button slot="append" icon="el-icon-search" @click="gogogo"></el-button>-->
-<!--        </el-input>-->
-<!--      </el-col>-->
       <el-col :span="2" :offset="9">
       <el-badge :value="3" class="news"></el-badge>
           <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
@@ -26,9 +21,6 @@
       <el-col :span="10" id="page-title" v-show="isShow">
             <h1><span>2020第二季度预测概率前五新进重仓股股价</span></h1>
       </el-col>
-<!--     <el-col :span="6" :offset="7" id="page-dashboard">-->
-<!--       <el-link :underline="false">Dashboard</el-link>-->
-<!--     </el-col>-->
     </el-row>
   </div>
 </template>

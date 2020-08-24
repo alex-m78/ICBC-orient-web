@@ -21,7 +21,7 @@
         <el-table-column align="center" prop="arTurn" label="应收账款周转率"></el-table-column>
         <el-table-column align="center" prop="caTurn" label="流动资产周转率"></el-table-column>
         <el-table-column align="center" prop="assetsTurn" label="总资产周转率"></el-table-column>
-        <el-table-column align="center" prop="debtToAssets" label="资产负债率"></el-table-column>
+        <el-table-column fixed="right" align="center" prop="debtToAssets" label="资产负债率"></el-table-column>
       </el-table>
     </div>
     <el-divider>
@@ -47,7 +47,7 @@
         <el-table-column align="center" prop="qsalesYoy" label="营业收入同比增长率(单季度)"></el-table-column>
         <el-table-column align="center" prop="qprofitYoy" label="净利润同比增长率(单季度)"></el-table-column>
         <el-table-column align="center" prop="equityYoy" label="净资产同比增长率"></el-table-column>
-        <el-table-column align="center" prop="closeStd" label="波动率"></el-table-column>
+        <el-table-column fixed="right" align="center" prop="closeStd" label="波动率"></el-table-column>
       </el-table>
     </div>
     <el-divider>
@@ -80,7 +80,9 @@
         <el-table-column fixed="right" align="center" prop="label" label="是否为基金重仓股"></el-table-column>
       </el-table>
     </div>
+
   </div>
+
 </template>
 
 <script>
@@ -102,15 +104,11 @@ export default {
         return "";
       }
     },
-    tableHeaderCellStyle: function ({ row, rowIndex }) {
-      let i;
-      for (i = 0; i < 23; i++) {
-        console.log(rowIndex);
-        if (row[i]["property"] === "label") {
-          return "warning-cell ";
-        }
+    tableHeaderCellStyle: function ({columnIndex}) {
+          if (columnIndex === 22){
+            return 'background: #ffdbc5';
+          }
       }
-    },
-  },
-};
+    }
+}
 </script>

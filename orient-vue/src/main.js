@@ -54,9 +54,11 @@ router.beforeEach((to, from, next) => {
     }
 });
 
-if ( router.path !== '/login' && router.path !== '/search' ){
-    $(window).resize(function () {location.reload();})
-}
+// $(window).resize(function () {location.reload();})
+
+// if ( router.options.routes[0]["path"] !== '/login'){
+//     $(window).resize(function () {location.reload();})
+// }
 
 
 new Vue({

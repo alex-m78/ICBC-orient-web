@@ -21,7 +21,7 @@
         <el-table-column align="center" prop="arTurn" label="应收账款周转率"></el-table-column>
         <el-table-column align="center" prop="caTurn" label="流动资产周转率"></el-table-column>
         <el-table-column align="center" prop="assetsTurn" label="总资产周转率"></el-table-column>
-        <el-table-column align="center" prop="debtToAssets" label="资产负债率"></el-table-column>
+        <el-table-column fixed="right" align="center" prop="debtToAssets" label="资产负债率"></el-table-column>
       </el-table>
     </div>
     <el-divider>
@@ -47,7 +47,7 @@
         <el-table-column align="center" prop="qsalesYoy" label="营业收入同比增长率(单季度)"></el-table-column>
         <el-table-column align="center" prop="qprofitYoy" label="净利润同比增长率(单季度)"></el-table-column>
         <el-table-column align="center" prop="equityYoy" label="净资产同比增长率"></el-table-column>
-        <el-table-column align="center" prop="closeStd" label="波动率"></el-table-column>
+        <el-table-column fixed="right" align="center" prop="closeStd" label="波动率"></el-table-column>
       </el-table>
     </div>
     <el-divider>
